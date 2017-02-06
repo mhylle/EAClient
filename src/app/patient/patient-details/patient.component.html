@@ -1,0 +1,21 @@
+<div *ngIf="patient" class="well">
+  <div class="row">
+    <div class="col-md-2">{{patient.AlternativeId}}</div>
+    <div class="col-md-5">{{patient.Name}}</div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="row">
+    <strong>Episode of care elements</strong>
+  </div>
+  <div *ngFor="let episodeofcareelement of patient.EpisodeOfCareElements" class="row">
+    <episodeofcareelement [episodeOfCareElement]="episodeofcareelement"></episodeofcareelement>
+  </div>
+  <div class="row">
+    <select [(ngModel)]="selectedEoc">
+      <option *ngFor="let eocElm of eocElms" [ngValue]="eocElm">{{eocElm.episodeOfCareLabel}}</option>
+    </select>
+    <div>
+      <button (click)="addEoCElement()">Add Element</button>
+    </div>
+  </div>
+</div>

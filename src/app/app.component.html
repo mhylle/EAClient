@@ -1,0 +1,24 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+      <a class="navbar-brand" href="#">LPR3 Data</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a routerLink="/referral" class="nav-link" ><img src="../assets/icon-referral.png" width="18" title="Modtag henvisning"> </a></li>
+        <li class="nav-item"><a routerLink="/patients" class="nav-link" ><img src="../assets/showpatient2.png" width="18" title="Vis patienter"></a></li>
+        <li class="nav-item"><a routerLink="/createPatient" class="nav-link" ><img src="../assets/user_add.png" width="18" title="Tilføj patient"></a></li>
+        <li class="nav-item"><a routerLink="/cancerFlow" class="nav-link" ><img src="../assets/indlaeggelse.gif" width="18" title="Indlæg patient"> </a></li>
+        <li class="nav-item"><a routerLink="/createEpisodeOfCareElement" class="nav-link" >Create Episode of Care Element</a></li>
+        <li class="nav-item"><a routerLink="/showEpisodeOfCareElement" class="nav-link" >Show Episode of Care Elements</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

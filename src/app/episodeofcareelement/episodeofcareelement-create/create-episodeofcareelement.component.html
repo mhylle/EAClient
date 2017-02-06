@@ -1,0 +1,21 @@
+<div>
+  <form (submit)="onSubmit()">
+    <div><strong>episodeOfCareLabel:</strong><input type="text" [(ngModel)]="episodeOfCareLabel" name="episodeOfCareLabel"></div>
+    <div><strong>responsibleUnit</strong><input type="text" [(ngModel)]="responsibleUnit" name="responsibleUnit"></div>
+    <div><strong>startTime</strong>{{startTime | json}}</div>
+    <div><strong>startTime2</strong>
+      <input placeholder="yyyy-mm-dd"
+             name="startTime" [(ngModel)]="startTime" ngbDatepicker #d1="ngbDatepicker">
+        <i class="fa fa-calendar" aria-hidden="true"(click)="d1.toggle()"></i>
+    </div>
+    <div><strong>endTime</strong>
+      <input placeholder="yyyy-mm-dd"
+             name="startTime" [(ngModel)]="endTime" ngbDatepicker #d2="ngbDatepicker">
+      <i class="fa fa-calendar" aria-hidden="true"(click)="d2.toggle()"></i>
+    </div>
+    <div>
+      <button type="submit">Add Episode of Care Element</button>
+    </div>
+  </form>
+
+</div>
