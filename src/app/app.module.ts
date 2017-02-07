@@ -11,10 +11,12 @@ import {CreatePatientComponent} from "./patient/patient-create/create-patient.co
 import {CreateEpisodeOfCareElementComponent} from "./episodeofcareelement/episodeofcareelement-create/create-episodeofcareelement.component";
 import {EpisodeofcareListComponent} from "./episodeofcare-list/episodeofcare-list.component";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {CreateReferralComponent} from "./referral/create/referral.component";
 
 
 
 const appRoutes: Routes = [
+  {path: 'referral', component: CreateReferralComponent},
   {path: 'patients', component: PatientListComponent},
   {path: 'patient/:id', component: PatientComponent},
   {path: 'createPatient', component: CreatePatientComponent},
@@ -30,7 +32,8 @@ const appRoutes: Routes = [
     EpisodeOfCareElementComponent,
     CreatePatientComponent,
     CreateEpisodeOfCareElementComponent,
-    EpisodeofcareListComponent
+    EpisodeofcareListComponent,
+    CreateReferralComponent
   ],
   imports: [
     BrowserModule,
