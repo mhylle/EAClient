@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {EpisodeOfCareElementService} from "../services/episodeofcareelement.service";
-import {EpisodeOfCareElement} from "../episodeofcareelement/episodeofcareelement-details/EpisodeOfCareElement";
+import {EpisodeOfCareElementService} from "../../services/episodeofcareelement.service";
+import {EpisodeOfCareElement} from "../../episodeofcareelement/episodeofcareelement-details/EpisodeOfCareElement";
 
 @Component({
   selector: 'episodeofcare-list',
-  templateUrl: './episodeofcare-list.component.html',
-  styleUrls: ['./episodeofcare-list.component.css'],
+  templateUrl: 'episodeofcare-list.component.html',
+  styleUrls: ['episodeofcare-list.component.css'],
   providers: [EpisodeOfCareElementService]
 })
 export class EpisodeofcareListComponent implements OnInit {

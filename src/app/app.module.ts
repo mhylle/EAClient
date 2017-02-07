@@ -9,13 +9,13 @@ import {EpisodeOfCareElementComponent} from "./episodeofcareelement/episodeofcar
 import {Routes, RouterModule} from "@angular/router";
 import {CreatePatientComponent} from "./patient/patient-create/create-patient.component";
 import {CreateEpisodeOfCareElementComponent} from "./episodeofcareelement/episodeofcareelement-create/create-episodeofcareelement.component";
-import {EpisodeofcareListComponent} from "./episodeofcare-list/episodeofcare-list.component";
+import {EpisodeofcareListComponent} from "./episodeofcareelement/episodeofcare-list/episodeofcare-list.component";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CreateReferralComponent} from "./referral/create/referral.component";
-
-
+import {ListReferralComponent} from "./referral/list/list-referral";
 
 const appRoutes: Routes = [
+  {path: 'list-referrals', component: ListReferralComponent},
   {path: 'referral', component: CreateReferralComponent},
   {path: 'patients', component: PatientListComponent},
   {path: 'patient/:id', component: PatientComponent},
@@ -33,7 +33,8 @@ const appRoutes: Routes = [
     CreatePatientComponent,
     CreateEpisodeOfCareElementComponent,
     EpisodeofcareListComponent,
-    CreateReferralComponent
+    CreateReferralComponent,
+    ListReferralComponent
   ],
   imports: [
     BrowserModule,
