@@ -12,7 +12,10 @@ import {CreateEpisodeOfCareElementComponent} from "./episodeofcareelement/episod
 import {EpisodeofcareListComponent} from "./episodeofcareelement/episodeofcare-list/episodeofcare-list.component";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CreateReferralComponent} from "./referral/create/referral.component";
-import {ListReferralComponent} from "./referral/list/list-referral";
+import {ListReferralComponent} from "./referral/list/list-referral.component";
+import {ContextComponent} from "./context/context-component";
+import {Ng2CompleterModule} from "ng2-completer";
+import {PatientSearchComponent} from "./patient/search/patient-search.component";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},
@@ -27,6 +30,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    ContextComponent,
     PatientListComponent,
     PatientComponent,
     EpisodeOfCareElementComponent,
@@ -34,14 +38,16 @@ const appRoutes: Routes = [
     CreateEpisodeOfCareElementComponent,
     EpisodeofcareListComponent,
     CreateReferralComponent,
-    ListReferralComponent
+    ListReferralComponent,
+    PatientSearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    Ng2CompleterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

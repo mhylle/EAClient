@@ -10,16 +10,28 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a routerLink="/list-referrals" ><img src="../assets/referral_list.png" title="Vis henvisninger" class="nav-button" > </a></li>
-        <li class="nav-item"><a routerLink="/referral" ><img src="../assets/referral_add.png" title="Modtag henvisning" class="nav-button" > </a></li>
-        <li class="nav-item"><a routerLink="/patients"><img src="../assets/showpatient2.png" title="Vis patienter" class="nav-button" ></a></li>
-        <li class="nav-item"><a routerLink="/createPatient" ><img src="../assets/user_add.png" title="Tilføj patient" class="nav-button" ></a></li>
-        <li class="nav-item"><a routerLink="/cancerFlow" ><img src="../assets/indlaeggelse.gif" title="Indlæg patient" class="nav-button" > </a></li>
-        <li class="nav-item"><a routerLink="/createEpisodeOfCareElement" ><img src="../assets/eoce.png" title="Indlæg patient" class="nav-button" ></a></li>
-        <li class="nav-item"><a routerLink="/showEpisodeOfCareElement" ><img src="../assets/eoce_list.png" title="Vis Forløb" class="nav-button" ></a></li>
+        <li class="nav-item"><a routerLink="/list-referrals"><img src="../assets/referral_list.png"
+                                                                  title="Vis henvisninger" class="nav-button"> </a></li>
+        <li class="nav-item"><a routerLink="/referral"><img src="../assets/referral_add.png" title="Modtag henvisning"
+                                                            class="nav-button"> </a></li>
+        <li class="nav-item"><a routerLink="/patients"><img src="../assets/showpatient2.png" title="Vis patienter"
+                                                            class="nav-button"></a></li>
+        <li class="nav-item"><a routerLink="/createPatient"><img src="../assets/user_add.png" title="Tilføj patient"
+                                                                 class="nav-button"></a></li>
+        <li class="nav-item"><a routerLink="/cancerFlow"><img src="../assets/indlaeggelse.gif" title="Indlæg patient"
+                                                              class="nav-button"> </a></li>
+        <li class="nav-item"><a routerLink="/createEpisodeOfCareElement"><img src="../assets/eoce.png"
+                                                                              title="Indlæg patient" class="nav-button"></a>
+        </li>
+        <li class="nav-item"><a routerLink="/showEpisodeOfCareElement"><img src="../assets/eoce_list.png"
+                                                                            title="Vis Forløb" class="nav-button"></a>
+        </li>
       </ul>
     </div>
+    <span class="navbar-text">
+      <context></context>
+    </span>
   </div>
 </nav>
-
+<patient-search></patient-search>
 <router-outlet></router-outlet>

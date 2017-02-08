@@ -22,4 +22,8 @@ export class ListReferralComponent implements OnInit {
     });
   }
 
+  ngReceiveReferral(referral: Referral) {
+    console.log("Receiving referral: " + referral.Cause);
+  }
+
 }
