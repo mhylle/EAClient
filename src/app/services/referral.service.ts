@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Http, Headers} from "@angular/http";
 import "rxjs/Rx";
-import {EpisodeOfCareElement} from "../episodeofcareelement/episodeofcareelement-details/EpisodeOfCareElement";
 import {Referral} from "../referral/Referral";
 
 @Injectable()
