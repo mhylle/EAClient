@@ -1,0 +1,38 @@
+.table-header {
+  padding: 8px;
+  font-weight: bold;
+}
+
+.table-cell {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-bottom: dashed 1px lightgray;
+}
+
+.odd {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fffdf4+0,fff2e0+52&0.35+0,0.35+100 */
+  background: -moz-linear-gradient(-45deg,  rgba(255,253,244,0.35) 0%, rgba(255,242,224,0.35) 52%, rgba(255,242,224,0.35) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  rgba(255,253,244,0.35) 0%,rgba(255,242,224,0.35) 52%,rgba(255,242,224,0.35) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,  rgba(255,253,244,0.35) 0%,rgba(255,242,224,0.35) 52%,rgba(255,242,224,0.35) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#59fffdf4', endColorstr='#59fff2e0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  transition: all 0.1s ease-in-out;
+}
+.odd:hover {
+  transform: scale(1.01);
+  filter: brightness(95%);
+}
+
+
+.even {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f7fc+1,dbeaf9+52&0.35+0,0.35+100 */
+  background: -moz-linear-gradient(-45deg,  rgba(242,247,252,0.35) 0%, rgba(242,247,252,0.35) 1%, rgba(219,234,249,0.35) 52%, rgba(219,234,249,0.35) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  rgba(242,247,252,0.35) 0%,rgba(242,247,252,0.35) 1%,rgba(219,234,249,0.35) 52%,rgba(219,234,249,0.35) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,  rgba(242,247,252,0.35) 0%,rgba(242,247,252,0.35) 1%,rgba(219,234,249,0.35) 52%,rgba(219,234,249,0.35) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#59f2f7fc', endColorstr='#59dbeaf9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  transition: all 0.1s ease-in-out;
+}
+
+.even:hover {
+  transform: scale(1.01);
+  filter: brightness(95%);
+}

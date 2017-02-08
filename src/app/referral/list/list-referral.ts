@@ -6,6 +6,7 @@ import {ReferralService} from "../../services/referral.service";
   moduleId: module.id,
   selector: 'list-referral',
   templateUrl: 'list-referral.component.html',
+  styleUrls: ['list-referral.component.css'],
   providers: [ReferralService]
 })
 export class ListReferralComponent implements OnInit {
