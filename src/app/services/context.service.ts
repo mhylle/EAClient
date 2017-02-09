@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Patient} from "../patient/patient-details/Patient";
 import {Observable, Subscriber} from "rxjs";
+import {isUndefined} from "util";
 
 @Injectable()
 export class ContextService {
@@ -10,11 +11,26 @@ export class ContextService {
   }
 
   get context(): Observable<Patient> {
-    return new Observable<Patient>((subscriber: Subscriber<Patient>) => subscriber.next(this._context)).map(o => o);
+    if (this._context !== null && !isUndefined(this._context) ) {
+      console.log("Context not null");
+      console.log("Get Context, current context: " + this._context.AlternativeId);
+    } else {
+      console.log("Get Context, current context: no context");
+    }
+    return Observable.create(function (observer) {
+      observer.next(this._context);
+      observer.complete();
+    });
+
   }
 
   setContext(patient: Patient) {
+    console.log("ready to set context");
+    console.log("Sat context, " + patient.AlternativeId);
     this._context = patient;
-    return new Observable<Patient>((subscriber: Subscriber<Patient>) => subscriber.next(this._context)).map(o => o);
+    return Observable.create(function (observer) {
+      observer.next(this._context);
+      observer.complete();
+    });
   }
 }

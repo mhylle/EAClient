@@ -14,6 +14,7 @@ export class PatientSearchComponent implements OnInit {
   private searchStr: string;
   private dataService: CompleterData;
   private patients: Patient[];
+  public ppContext: Patient;
 
   constructor(private completerService: CompleterService, private patientService: PatientService, private contextService: ContextService) {
 
@@ -32,7 +33,11 @@ export class PatientSearchComponent implements OnInit {
     for (let i = 0; i < this.patients.length; i++) {
       let obj = this.patients[i];
       if (obj.AlternativeId === this.searchStr){
-        this.contextService.setContext(obj);
+        console.log("Found patient, trying to set to context");
+        this.contextService.setContext(obj).subscribe(res =>
+        {
+          this.ppContext = res;
+        });
       }
     }
   }
