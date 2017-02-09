@@ -1,25 +1,20 @@
 import {Injectable} from "@angular/core";
-import {Observable, Observer} from "rxjs";
 import {Patient} from "../patient/patient-details/Patient";
+import {Observable, Subscriber} from "rxjs";
 
 @Injectable()
 export class ContextService {
 
-  private _context = null;
-  contextChange: Observable<Patient>;
-  private _observer: Observer<Patient>;
-
+  private _context: Patient;
   constructor() {
-    this.contextChange = new Observable(observer => {
-      this._observer = observer}).share();
+  }
+
+  get context(): Observable<Patient> {
+    return new Observable<Patient>((subscriber: Subscriber<Patient>) => subscriber.next(this._context)).map(o => o);
   }
 
   setContext(patient: Patient) {
     this._context = patient;
-    this._observer.next(patient);
-  }
-
-  context() {
-    return this._context;
+    return new Observable<Patient>((subscriber: Subscriber<Patient>) => subscriber.next(this._context)).map(o => o);
   }
 }

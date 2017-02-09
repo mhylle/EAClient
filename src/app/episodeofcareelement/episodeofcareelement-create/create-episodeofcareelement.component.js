@@ -6,18 +6,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var episodeofcareelement_service_1 = require("../services/episodeofcareelement.service");
+var episodeofcareelement_service_1 = require("../../services/episodeofcareelement.service");
 var CreateEpisodeOfCareElementComponent = (function () {
     function CreateEpisodeOfCareElementComponent(episodeOfCareElementService) {
         this.episodeOfCareElementService = episodeOfCareElementService;
     }
     CreateEpisodeOfCareElementComponent.prototype.onSubmit = function () {
         var _this = this;
+        var start = new Date(this.startTime.year, this.startTime.month, this.startTime.day);
+        var end = null;
+        if (this.endTime !== null) {
+            end = new Date(this.endTime.year, this.endTime.month, this.endTime.day);
+        }
         var episodeOfCareElement = {
             episodeOfCareLabel: this.episodeOfCareLabel,
             responsibleUnit: this.responsibleUnit,
-            startTime: this.startTime,
+            startTime: start.toJSON(),
+            endTime: end.toJSON(),
         };
+        console.log(episodeOfCareElement);
         this.episodeOfCareElementService.createEpisodeOfCareElement(episodeOfCareElement).subscribe(function (data) {
             _this.result = data;
         });

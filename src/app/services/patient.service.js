@@ -20,7 +20,17 @@ var PatientService = (function () {
     PatientService.prototype.createPatient = function (patient) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post(this.patientsUrl, JSON.stringify(patient), { headers: headers });
+        var body = JSON.stringify(patient);
+        console.log('Create Patient: ' + body);
+        return this.http.post(this.patientsUrl, body, { headers: headers });
+    };
+    PatientService.prototype.addEpisodeOfCareElementToPatient = function (patient, episodeOfCareElement) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        var pid = patient.Id;
+        var eid = episodeOfCareElement.Id;
+        console.log("PID: " + pid + " , EID: " + eid);
+        return this.http.put(this.patientsUrl + patient.Id + "/episodeofcareelement/" + episodeOfCareElement.Id, { headers: headers });
     };
     PatientService = __decorate([
         core_1.Injectable()

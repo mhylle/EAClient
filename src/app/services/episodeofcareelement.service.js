@@ -20,7 +20,9 @@ var EpisodeOfCareElementService = (function () {
     EpisodeOfCareElementService.prototype.createEpisodeOfCareElement = function (episodeOfCareElement) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post(this.episodeOfCareElementUrl, JSON.stringify(episodeOfCareElement), { headers: headers });
+        var args = JSON.stringify(episodeOfCareElement);
+        console.log(args);
+        return this.http.post(this.episodeOfCareElementUrl, args, { headers: headers });
     };
     EpisodeOfCareElementService = __decorate([
         core_1.Injectable()
