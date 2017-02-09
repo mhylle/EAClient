@@ -1,4 +1,5 @@
-<div>Context: {{patientContext}}!</div>
-<div><input [ngModel]="patientContext"></div>
-<div><input [ngModel]="ppContext"></div>
-<div>Ingen context</div>
+<div>
+  <div *ngIf="patientContext">{{patientContext.AlternativeId}}</div>
+  <div *ngIf="patientContext">{{patientContext.Name}}</div>
+  <div *ngIf="!patientContext">Ingen context</div>
+</div>

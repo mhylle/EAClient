@@ -1,14 +1,16 @@
-<div class="row">
-  <div class="col-md-2">Id</div>
-  <div class="col-md-2">Label</div>
-  <div class="col-md-2">Responsible Unit</div>
-  <div class="col-md-3">Start Time</div>
-  <div class="col-md-3">End Time</div>
-</div>
-<div *ngFor="let episodeOfCareElement of episodeOfCareElements" class="row">
+<div class="container container-fluid">
+  <div class="row">
+    <div class="col-md-2">Id</div>
+    <div class="col-md-2">Label</div>
+    <div class="col-md-2">Responsible Unit</div>
+    <div class="col-md-3">Start Time</div>
+    <div class="col-md-3">End Time</div>
+  </div>
+  <div *ngFor="let episodeOfCareElement of episodeOfCareElements" class="row">
     <div class="col-md-2">{{episodeOfCareElement.Id}}</div>
     <div class="col-md-2">{{episodeOfCareElement.episodeOfCareLabel}}</div>
     <div class="col-md-2">{{episodeOfCareElement.responsibleUnit}}</div>
     <div class="col-md-3">{{episodeOfCareElement.startTime | date: 'dd-MM-yyyy HH:mm'}}</div>
     <div class="col-md-3">{{episodeOfCareElement.endTime | date: 'dd-MM-yyyy HH:mm'}}</div>
+  </div>
 </div>

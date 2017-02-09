@@ -16,6 +16,7 @@ import {ListReferralComponent} from "./referral/list/list-referral.component";
 import {ContextComponent} from "./context/context-component";
 import {Ng2CompleterModule} from "ng2-completer";
 import {PatientSearchComponent} from "./patient/search/patient-search.component";
+import {ContextService} from "./services/context.service";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},
@@ -49,7 +50,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     Ng2CompleterModule
   ],
-  providers: [],
+  providers: [ContextService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

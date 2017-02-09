@@ -8,13 +8,12 @@ import {ContextService} from "../../services/context.service";
   moduleId: module.id,
   selector: 'patient-search',
   templateUrl: 'patient-search.component.html',
-  providers: [PatientService, ContextService]
+  providers: [PatientService]
 })
 export class PatientSearchComponent implements OnInit {
   private searchStr: string;
   private dataService: CompleterData;
   private patients: Patient[];
-  public ppContext: Patient;
 
   constructor(private completerService: CompleterService, private patientService: PatientService, private contextService: ContextService) {
 
@@ -34,10 +33,7 @@ export class PatientSearchComponent implements OnInit {
       let obj = this.patients[i];
       if (obj.AlternativeId === this.searchStr){
         console.log("Found patient, trying to set to context");
-        this.contextService.setContext(obj).subscribe(res =>
-        {
-          this.ppContext = res;
-        });
+        this.contextService.setContext(obj);
       }
     }
   }

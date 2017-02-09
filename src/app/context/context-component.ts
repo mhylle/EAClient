@@ -1,33 +1,29 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Patient} from "../patient/patient-details/Patient";
 import {ContextService} from "../services/context.service";
+import {Subscription} from "rxjs";
 
 @Component({
   moduleId: module.id,
   selector: 'context',
   templateUrl: 'context.component.html',
-  styleUrls: ['context.component.css'],
-  providers: [ContextService]
+  styleUrls: ['context.component.css']
 })
 export class ContextComponent implements OnInit, OnDestroy {
   public patientContext: Patient;
+  subscription: Subscription;
 
   constructor(private contextService: ContextService) {
   }
 
   ngOnInit() {
-    this.contextService.context.subscribe(context => {
-      console.log("subscription...");
+    this.subscription = this.contextService.change$.subscribe(context => {
       this.patientContext = context;
-      if (this.patientContext != null) {
-        console.log("1I am setting context to " + this.patientContext.AlternativeId);
-      } else {
-        console.log("NO context yet");
-      }
     });
   }
 
   ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
