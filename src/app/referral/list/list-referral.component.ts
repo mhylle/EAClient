@@ -28,14 +28,14 @@ export class ListReferralComponent implements OnInit {
     console.log("Receiving referral: " + referral.Cause);
   }
 
-  convertCauseClassifikation(classification) {
+  convertCauseClassification(classification) {
     for (let item in CauseClassifications) {
       if (classification === item) {
         return CauseClassifications[item];
       }
     }
   }
-  convertFreeChoiceClassifikation(classification) {
+  convertFreeChoiceClassification(classification) {
     for (let item in OwnChoiceClassifications) {
       if (classification === item) {
         return OwnChoiceClassifications[item];

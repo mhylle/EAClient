@@ -9,8 +9,11 @@
       <div class="row">
         <div class="col-md-12">{{referral.ReferredAt | date: 'dd-MM-yyyy HH:mm'}}</div>
       </div>
-      <div class="col-md-12">{{convertCauseClassifikation(referral.Cause)}}</div>
-      <div class="col-md-12">{{convertFreeChoiceClassifikation(referral.OwnChoice)}}</div>
+      <div class="col-md-12">{{convertCauseClassification(referral.Cause)}}</div>
+      <div class="col-md-12">{{convertFreeChoiceClassification(referral.OwnChoice)}}</div>
+      <div class="col-md-12" *ngIf="referral.Patient">
+        Patient: {{referral.Patient.Name}}
+      </div>
     </div>
     <div class="col-md-1">
       <button (click)="ngReceiveReferral(referral)">Receive</button>
