@@ -17,7 +17,7 @@ export class ContextComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.contextService.change$.subscribe(context => {
+    this.subscription = this.contextService.contextChange.subscribe(context => {
       this.patientContext = context;
     });
   }
@@ -25,5 +25,4 @@ export class ContextComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

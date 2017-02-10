@@ -7,11 +7,11 @@ import {Observable, Observer} from "rxjs";
 export class ContextService {
 
   private _context: Patient = null;
-  change$: Observable<Patient>;
+  contextChange: Observable<Patient>;
   private _observer: Observer<any>;
 
   constructor() {
-    this.change$ = new Observable(
+    this.contextChange = new Observable(
       observer => this._observer = observer
     ).share();
   }
@@ -21,15 +21,9 @@ export class ContextService {
   }
 
   setContext(patient: Patient) {
-    console.log("ready to set context");
-    console.log("Sat context, " + patient.AlternativeId);
     this._context = patient;
     if (this._observer) {
       this._observer.next(patient);
     }
-    return Observable.create(function (observer) {
-      observer.next(this._context);
-      observer.complete();
-    });
   }
 }
