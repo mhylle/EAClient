@@ -1,18 +1,17 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-2 table-header">Type</div>
-    <div class="col-md-5 table-header">Cause</div>
-    <div class="col-md-1 table-header">Own Choice</div>
-    <div class="col-md-2 table-header">Referred at</div>
-    <div class="col-md-1 table-header"></div>
-  </div>
   <div *ngFor="let referral of referrals;let index =index;
              let isOdd=odd;
              let isEven=even" class="row table-cell" [class.odd]="isOdd" [class.even]="isEven">
-    <div class="col-md-2">{{referral.Type}}</div>
-    <div class="col-md-5">{{referral.Cause}}</div>
-    <div class="col-md-1">{{referral.OwnChoice}}</div>
-    <div class="col-md-2">{{referral.ReferredAt | date: 'dd-MM-yyyy HH:mm'}}</div>
+    <div class="col-md-11">
+      <div class="row">
+        <div class="col-md-12">{{referral.Type}}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">{{referral.ReferredAt | date: 'dd-MM-yyyy HH:mm'}}</div>
+      </div>
+      <div class="col-md-12">{{convertCauseClassifikation(referral.Cause)}}</div>
+      <div class="col-md-12">{{convertFreeChoiceClassifikation(referral.OwnChoice)}}</div>
+    </div>
     <div class="col-md-1">
       <button (click)="ngReceiveReferral(referral)">Receive</button>
     </div>

@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Referral} from "../Referral";
 import {ReferralService} from "../../services/referral.service";
+import {CauseClassifications} from "../../classifications/CauseClassifications";
+import {OwnChoiceClassifications} from "../../classifications/OwnChoiceClassifications";
 
 @Component({
   moduleId: module.id,
@@ -26,4 +28,18 @@ export class ListReferralComponent implements OnInit {
     console.log("Receiving referral: " + referral.Cause);
   }
 
+  convertCauseClassifikation(classification) {
+    for (let item in CauseClassifications) {
+      if (classification === item) {
+        return CauseClassifications[item];
+      }
+    }
+  }
+  convertFreeChoiceClassifikation(classification) {
+    for (let item in OwnChoiceClassifications) {
+      if (classification === item) {
+        return OwnChoiceClassifications[item];
+      }
+    }
+  }
 }
