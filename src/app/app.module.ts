@@ -17,6 +17,7 @@ import {ContextComponent} from "./context/context-component";
 import {Ng2CompleterModule} from "ng2-completer";
 import {PatientSearchComponent} from "./patient/search/patient-search.component";
 import {ContextService} from "./services/context.service";
+import {PatientIdFilterPipe} from "./filters/PatientIdFilter";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},

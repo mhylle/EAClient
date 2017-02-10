@@ -11,9 +11,6 @@
       </div>
       <div class="col-md-12">{{convertCauseClassification(referral.Cause)}}</div>
       <div class="col-md-12">{{convertFreeChoiceClassification(referral.OwnChoice)}}</div>
-      <div class="col-md-12" *ngIf="referral.Patient">
-        Patient: {{referral.Patient.Name}}
-      </div>
     </div>
     <div class="col-md-1">
       <button (click)="ngReceiveReferral(referral)">Receive</button>
