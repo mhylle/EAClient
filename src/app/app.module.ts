@@ -41,7 +41,8 @@ const appRoutes: Routes = [
     EpisodeofcareListComponent,
     CreateReferralComponent,
     ListReferralComponent,
-    PatientSearchComponent
+    PatientSearchComponent,
+    PatientIdFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -52,7 +53,7 @@ const appRoutes: Routes = [
     Ng2CompleterModule
   ],
   providers: [ContextService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

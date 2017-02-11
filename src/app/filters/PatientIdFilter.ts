@@ -1,15 +1,21 @@
-import {Pipe, PipeTransform, Injectable} from '@angular/core';
-import {Patient} from "../patient/patient-details/Patient";
+import {Pipe, PipeTransform} from "@angular/core";
+import {Referral} from "../referral/Referral";
 
 @Pipe({
-  name: 'PatientIdFilter'
+  name: 'PatientIdFilter',
 })
 
-@Injectable()
 export class PatientIdFilterPipe implements PipeTransform {
-  transform(value: Patient[], args: any[]): any {
-    return value.filter(item => {
-      args.length > 0 ? item.Id === (args[0].Id) : true;
-    });
+
+  transform(value: Referral[], arg: any): any {
+    if (!arg) {
+      return value;
+    }
+    if (!value) {
+      return value;
+    }
+
+    return value.filter(item => item.Patient ? item.Patient.Id === arg.Id : false);
   }
 }
+

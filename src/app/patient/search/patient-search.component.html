@@ -16,6 +16,7 @@
       </div>
       <ng2-completer [(ngModel)]="searchStr" [dataService]="dataService" [minSearchLength]="0" [autoMatch]="true"
                      (selected)="selectPatient($event)"></ng2-completer>
+      <div><button type="button" (click)="clearContext()">Slet kontest</button> </div>
     </div>
   </div>
 </div>

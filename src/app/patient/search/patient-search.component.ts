@@ -37,4 +37,8 @@ export class PatientSearchComponent implements OnInit {
       }
     }
   }
+
+  clearContext() {
+    this.contextService.setContext(null);
+  }
 }
