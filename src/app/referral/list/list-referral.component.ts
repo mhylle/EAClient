@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Referral} from "../Referral";
 import {ReferralService} from "../../services/referral.service";
-import {CauseClassifications} from "../../classifications/CauseClassifications";
+import {ReasonClassifications} from "../../classifications/CauseClassifications";
 import {OwnChoiceClassifications} from "../../classifications/OwnChoiceClassifications";
 import {PatientIdFilterPipe} from "../../filters/PatientIdFilter";
 import {ContextService} from "../../services/context.service";
@@ -34,13 +34,14 @@ export class ListReferralComponent implements OnInit, OnDestroy {
   }
 
   ngReceiveReferral(referral: Referral) {
-    console.log("Receiving referral: " + referral.Cause);
+    console.log("Receiving referral: " + referral.Reason);
+    this.referralService.receiveReferral(referral);
   }
 
-  convertCauseClassification(classification) {
-    for (let item in CauseClassifications) {
+  convertReasonClassification(classification) {
+    for (let item in ReasonClassifications) {
       if (classification === item) {
-        return CauseClassifications[item];
+        return ReasonClassifications[item];
       }
     }
   }

@@ -25,4 +25,10 @@ export class ReferralService {
     console.log(args)
     return this.http.post(this.referralUrl, args, {headers: headers});
   }
+
+  receiveReferral(referral: Referral) {
+    return this.http.get(this.referralUrl + referral.Id + "/receive")
+      .map(res => res.json());
+
+  }
 }

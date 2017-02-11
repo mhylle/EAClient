@@ -1,6 +1,7 @@
 import {Patient} from "../patient/patient-details/Patient";
 export interface Referral {
-  Cause: string;
+  Id: string,
+  Reason: string;
   Type: string;
   ReferringParty: string;
   OwnChoice: boolean;

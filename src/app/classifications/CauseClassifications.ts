@@ -1,5 +1,5 @@
 import {Enum} from "./Enum";
-export class CauseClassifications extends Enum<String> {
+export class ReasonClassifications extends Enum<String> {
   public static readonly HEAD_AND_CANCER_PACKAGE_START = new Enum("Hoved og halskræft: Pakkeforløg start");
   public static readonly HEAD_AND_CANCER_ELUCIDATION = new Enum("Hoved og halskræft: Udredning");
   public static readonly HEAD_AND_CANCER_DECISION = new Enum("Hoved og halskræft: Beslutning vedrørende initiel behandling");
