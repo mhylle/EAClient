@@ -18,6 +18,9 @@ import {Ng2CompleterModule} from "ng2-completer";
 import {PatientSearchComponent} from "./model/patient/search/patient-search.component";
 import {ContextService} from "./services/context.service";
 import {PatientIdFilterPipe} from "./filters/PatientIdFilter";
+import {IdConverterService} from "./utilities/IdConverter";
+import {PatientService} from "./services/patient.service";
+import {BasicPatientComponent} from "./model/patient/basic/basic";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},
@@ -42,7 +45,8 @@ const appRoutes: Routes = [
     CreateReferralComponent,
     ListReferralComponent,
     PatientSearchComponent,
-    PatientIdFilterPipe
+    PatientIdFilterPipe,
+    BasicPatientComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     Ng2CompleterModule
   ],
-  providers: [ContextService],
+  providers: [ContextService, PatientService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

@@ -31,8 +31,15 @@ export class PatientService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let pid = patient.Id;
-    let eid= episodeOfCareElement.Id;
+    let eid = episodeOfCareElement.Id;
     console.log("PID: " + pid + " , EID: " + eid);
     return this.http.put(this.patientsUrl + patient.Id + "/episodeofcareelement/" + episodeOfCareElement.Id, {headers: headers});
+  }
+
+  getPatient(id: string) {
+    return this.http.get(this.patientsUrl + id).map(res => {
+      console.log("retrieve patient, result was: " + res);
+      res.json()
+    });
   }
 }

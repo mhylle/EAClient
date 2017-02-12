@@ -6,4 +6,5 @@ export interface Referral {
   Status: string;
   Encounter?: Encounter;
   Patient?: Patient;
+  realPatient?: Patient;
 }

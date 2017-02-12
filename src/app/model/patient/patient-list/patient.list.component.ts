@@ -9,7 +9,7 @@ import {EpisodeOfCareElementService} from "../../../services/episodeofcareelemen
   selector: 'patient-list-component',
   templateUrl: 'patient.list.component.html',
   styleUrls: ['patient.list.component.css'],
-  providers: [PatientService, EpisodeOfCareElementService]
+  providers: [EpisodeOfCareElementService]
 })
 export class PatientListComponent implements OnInit {
 

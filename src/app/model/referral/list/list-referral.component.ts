@@ -6,20 +6,27 @@ import {PatientIdFilterPipe} from "../../../filters/PatientIdFilter";
 import {ContextService} from "../../../services/context.service";
 import {ReasonClassifications} from "../../../classifications/CauseClassifications";
 import {OwnChoiceClassifications} from "../../../classifications/OwnChoiceClassifications";
+import {IdConverterService} from "../../../utilities/IdConverter";
+import {PatientService} from "../../../services/patient.service";
 
 @Component({
   moduleId: module.id,
   selector: 'list-referral',
   templateUrl: 'list-referral.component.html',
   styleUrls: ['list-referral.component.css'],
-  providers: [ReferralService, PatientIdFilterPipe]
+  providers: [ReferralService, PatientIdFilterPipe, IdConverterService]
 })
 export class ListReferralComponent implements OnInit, OnDestroy {
   private referrals: Referral[];
   private filteredReferrals: Referral[];
+
   subscription: Subscription;
 
-  constructor(private referralService: ReferralService, private patientIdPipe: PatientIdFilterPipe, private contextService: ContextService) {
+  constructor(private referralService: ReferralService,
+              private patientIdPipe: PatientIdFilterPipe,
+              private contextService: ContextService,
+              private idConverterService: IdConverterService,
+              private patientService: PatientService) {
   }
 
   ngOnInit() {

@@ -5,7 +5,6 @@ import {PatientService} from "../../../services/patient.service";
   selector: 'create-patient',
   templateUrl: 'create-patient.component.html',
   styleUrls: ['create-patient.component.css'],
-  providers: [PatientService]
 })
 export class CreatePatientComponent {
   public Name: string;

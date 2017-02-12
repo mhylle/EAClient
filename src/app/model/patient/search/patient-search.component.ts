@@ -9,7 +9,6 @@ import {ContextService} from "../../../services/context.service";
   moduleId: module.id,
   selector: 'patient-search',
   templateUrl: 'patient-search.component.html',
-  providers: [PatientService]
 })
 export class PatientSearchComponent implements OnInit {
   private searchStr: string;
