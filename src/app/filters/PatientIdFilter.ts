@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {Referral} from "../referral/Referral";
+import {Referral} from "../model/referral/Referral";
 
 @Pipe({
   name: 'PatientIdFilter',

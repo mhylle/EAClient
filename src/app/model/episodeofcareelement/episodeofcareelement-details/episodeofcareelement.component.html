@@ -1,0 +1,9 @@
+<div class="container container-fluid">
+  <div *ngIf="episodeOfCareElement" class="row">
+    <div class="col-md-3">{{episodeOfCareElement.Id}}</div>
+    <div class="col-md-2">{{episodeOfCareElement.Status}}</div>
+    <div class="col-md-1">{{episodeOfCareElement.Period.StartTime}}</div>
+    <div class="col-md-1">{{episodeOfCareElement.Period.EndTime}}</div>
+    <div class="col-md-3">{{episodeOfCareElement.ResponsibleUnit}}</div>
+  </div>
+</div>

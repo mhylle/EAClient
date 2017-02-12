@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
-import {Patient} from "../patient/patient-details/Patient";
+import {Patient} from "../model/patient/Patient";
 import {ContextService} from "../services/context.service";
 import {Subscription} from "rxjs";
 

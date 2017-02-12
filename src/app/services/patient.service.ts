@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Http, Headers} from "@angular/http";
 import "rxjs/Rx";
-import {Patient} from "../patient/patient-details/Patient";
-import {EpisodeOfCareElement} from "../episodeofcareelement/episodeofcareelement-details/EpisodeOfCareElement";
+import {Patient} from "../model/patient/Patient";
+import {EpisodeOfCareElement} from "../model/episodeofcareelement/EpisodeOfCareElement";
 
 @Injectable()
 export class PatientService {

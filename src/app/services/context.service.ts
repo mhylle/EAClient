@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Patient} from "../patient/patient-details/Patient";
+import {Patient} from "../model/patient/Patient";
 import {Observable, Observer} from "rxjs";
 
 @Injectable()
