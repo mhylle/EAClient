@@ -37,9 +37,7 @@ export class PatientService {
   }
 
   getPatient(id: string) {
-    return this.http.get(this.patientsUrl + id).map(res => {
-      console.log("retrieve patient, result was: " + res);
-      res.json()
-    });
+    return this.http.get(this.patientsUrl + id)
+      .map(res => res.json());
   }
 }

@@ -15,7 +15,10 @@ export class PatientIdFilterPipe implements PipeTransform {
       return value;
     }
 
-    return value.filter(item => item.Patient ? item.Patient.Id === arg.Id : false);
+    return value.filter(item => {
+      console.log("ItemId: " + item.Id + " aeg: " + arg.Id);
+      item.Id === arg.Id
+    });
   }
 }
 
