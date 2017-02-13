@@ -21,6 +21,7 @@ import {PatientIdFilterPipe} from "./filters/PatientIdFilter";
 import {IdConverterService} from "./utilities/IdConverter";
 import {PatientService} from "./services/patient.service";
 import {BasicPatientComponent} from "./model/patient/basic/basic";
+import {ReferralEpisodeOfCareElementComponent} from "./model/referral/list/ReferralEpisodeOfCareElement.component";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     ListReferralComponent,
     PatientSearchComponent,
     PatientIdFilterPipe,
-    BasicPatientComponent
+    BasicPatientComponent,
+    ReferralEpisodeOfCareElementComponent
   ],
   imports: [
     BrowserModule,

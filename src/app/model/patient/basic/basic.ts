@@ -19,7 +19,6 @@ export class BasicPatientComponent implements OnInit {
 
   ngOnInit() {
     this.patientService.getPatient(this.patientId).subscribe(patient => {
-      console.log(patient);
       this.basicpatient = patient;
     });
   }
