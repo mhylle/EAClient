@@ -22,12 +22,13 @@ export class ReferralService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let args = JSON.stringify(referral);
-    console.log(args)
     return this.http.post(this.referralUrl, args, {headers: headers});
   }
 
   receiveReferral(referral: Referral) {
-    return this.http.get(this.referralUrl + referral.Id + "/receive")
+    let url = this.referralUrl + referral.Id + "/receive";
+    console.log(url);
+    return this.http.get(url)
       .map(res => res.json());
 
   }

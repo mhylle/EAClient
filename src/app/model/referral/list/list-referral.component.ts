@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Referral} from "../Referral";
 import {Subscription} from "rxjs";
 import {ReferralService} from "../../../services/referral.service";
@@ -24,9 +24,7 @@ export class ListReferralComponent implements OnInit, OnDestroy {
 
   constructor(private referralService: ReferralService,
               private patientIdPipe: PatientIdFilterPipe,
-              private contextService: ContextService,
-              private idConverterService: IdConverterService,
-              private patientService: PatientService) {
+              private contextService: ContextService) {
   }
 
   ngOnInit() {
@@ -41,7 +39,8 @@ export class ListReferralComponent implements OnInit, OnDestroy {
 
   ngReceiveReferral(referral: Referral) {
     console.log("Receiving referral: " + referral.Reason);
-    this.referralService.receiveReferral(referral);
+    this.referralService.receiveReferral(referral).subscribe(ref =>
+      this.referrals[this.referrals.indexOf(referral)] = ref);
   }
 
   convertReasonClassification(classification) {
