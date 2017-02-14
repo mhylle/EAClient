@@ -6,7 +6,6 @@
 .table-cell {
   padding-top: 2px;
   padding-bottom: 2px;
-  border-bottom: dashed 1px lightgray;
 }
 
 .odd {
@@ -35,4 +34,12 @@
 .even:hover {
   transform: scale(1.01);
   filter: brightness(95%);
+}
+
+.mh-card {
+  border-radius: 2px;
+  margin-bottom: 4px;
+  -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
 }

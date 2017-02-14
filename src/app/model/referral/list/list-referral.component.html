@@ -1,7 +1,7 @@
 <div class="container">
   <div *ngFor="let referral of filteredReferrals;let index =index;
              let isOdd=odd;
-             let isEven=even" class="row table-cell" [class.odd]="isOdd" [class.even]="isEven"
+             let isEven=even" class="row table-cell mh-card" [class.odd]="isOdd" [class.even]="isEven"
        animation-player [delay]="50+index*50" [duration]="50" [animation]="'fadeIn'" [play]="true">
     <div class="col-md-11">
       <div class="row">
