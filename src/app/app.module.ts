@@ -10,7 +10,7 @@ import {Routes, RouterModule} from "@angular/router";
 import {CreatePatientComponent} from "./model/patient/patient-create/create-patient.component";
 import {CreateEpisodeOfCareElementComponent} from "./model/episodeofcareelement/episodeofcareelement-create/create-episodeofcareelement.component";
 import {EpisodeofcareListComponent} from "./model/episodeofcareelement/episodeofcare-list/episodeofcare-list.component";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {CreateReferralComponent} from "./model/referral/create/referral.component";
 import {ListReferralComponent} from "./model/referral/list/list-referral.component";
 import {ContextComponent} from "./context/context-component";
@@ -18,12 +18,12 @@ import {Ng2CompleterModule} from "ng2-completer";
 import {PatientSearchComponent} from "./model/patient/search/patient-search.component";
 import {ContextService} from "./services/context.service";
 import {PatientIdFilterPipe} from "./filters/PatientIdFilter";
-import {IdConverterService} from "./utilities/IdConverter";
 import {PatientService} from "./services/patient.service";
 import {BasicPatientComponent} from "./model/patient/basic/basic";
 import {ReferralEpisodeOfCareElementComponent} from "./model/referral/list/ReferralEpisodeOfCareElement.component";
-import {AnimationService} from "./directives/animation-player.service";
-import {AnimationPlayerDirective} from "./directives/animation-player";
+import {AnimationService} from "./directives/animation/animation-player.service";
+import {AnimationPlayerDirective} from "./directives/animation/animation-player";
+import {DialogAnchorDirectice} from "./directives/dialogs/dialog-anchor.directive";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},
@@ -51,7 +51,8 @@ const appRoutes: Routes = [
     PatientIdFilterPipe,
     BasicPatientComponent,
     ReferralEpisodeOfCareElementComponent,
-    AnimationPlayerDirective
+    AnimationPlayerDirective,
+    DialogAnchorDirectice
   ],
   imports: [
     BrowserModule,

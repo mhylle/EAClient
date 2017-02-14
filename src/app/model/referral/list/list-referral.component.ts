@@ -57,6 +57,9 @@ export class ListReferralComponent implements OnInit, OnDestroy {
 
   ngReceiveReferral(referral: Referral) {
     console.log("Receiving referral: " + referral.Reason);
+    if (referral.Patient.EpisodeOfCareElements != null && referral.Patient.EpisodeOfCareElements.length >0) {
+
+    }
     this.referralService.receiveReferral(referral).subscribe(ref =>
       this.referrals[this.referrals.indexOf(referral)] = ref);
   }
