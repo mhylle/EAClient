@@ -22,6 +22,8 @@ import {IdConverterService} from "./utilities/IdConverter";
 import {PatientService} from "./services/patient.service";
 import {BasicPatientComponent} from "./model/patient/basic/basic";
 import {ReferralEpisodeOfCareElementComponent} from "./model/referral/list/ReferralEpisodeOfCareElement.component";
+import {AnimationService} from "./directives/animation-player.service";
+import {AnimationPlayerDirective} from "./directives/animation-player";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     PatientSearchComponent,
     PatientIdFilterPipe,
     BasicPatientComponent,
-    ReferralEpisodeOfCareElementComponent
+    ReferralEpisodeOfCareElementComponent,
+    AnimationPlayerDirective
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     Ng2CompleterModule
   ],
-  providers: [ContextService, PatientService],
+  providers: [ContextService, PatientService, AnimationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

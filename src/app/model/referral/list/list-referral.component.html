@@ -1,17 +1,22 @@
 <div class="container">
   <div *ngFor="let referral of filteredReferrals;let index =index;
              let isOdd=odd;
-             let isEven=even" class="row table-cell" [class.odd]="isOdd" [class.even]="isEven" [@flyInOut]="'in'">
+             let isEven=even" class="row table-cell" [class.odd]="isOdd" [class.even]="isEven"
+       animation-player [delay]="50+index*50" [duration]="50" [animation]="'fadeIn'" [play]="true">
     <div class="col-md-11">
       <div class="row">
         <div class="col-md-12">{{referral.Status}}</div>
       </div>
       <div class="col-md-12">{{convertReasonClassification(referral.Reason)}}</div>
-      <div class="col-md-12" *ngIf="referral.Patient"><basic-patient [patientId]="referral.Patient"></basic-patient></div>
+      <div class="col-md-12" *ngIf="referral.Patient">
+        <basic-patient [patientId]="referral.Patient"></basic-patient>
+      </div>
     </div>
     <div class="col-md-1">
       <button (click)="ngReceiveReferral(referral)">Receive</button>
     </div>
-    <div class="row"><referral-eoce [referral]="referral"></referral-eoce></div>
+    <div class="row">
+      <div class="col-md-12"><referral-eoce [referral]="referral"></referral-eoce></div>
+    </div>
   </div>
 </div>
