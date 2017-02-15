@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from "@angular/core";
+import {Component, OnInit, OnDestroy, ViewChild, Input} from "@angular/core";
 import {Referral} from "../Referral";
 import {Subscription} from "rxjs";
 import {ReferralService} from "../../../services/referral.service";
@@ -7,6 +7,7 @@ import {ContextService} from "../../../services/context.service";
 import {ReasonClassifications} from "../../../classifications/CauseClassifications";
 import {OwnChoiceClassifications} from "../../../classifications/OwnChoiceClassifications";
 import {IdConverterService} from "../../../utilities/IdConverter";
+import {ModalComponent} from "ng2-bs3-modal/components/modal";
 
 @Component({
   moduleId: module.id,
@@ -39,6 +40,11 @@ export class ListReferralComponent implements OnInit, OnDestroy {
   private filteredReferrals: Referral[];
 
   subscription: Subscription;
+  @Input("selectedReferral")
+  selectedEoceId: string;
+  @ViewChild('selectEpisodeOfCareElement')
+  modal:ModalComponent;
+  private selectedReferral: Referral;
 
   constructor(private referralService: ReferralService,
               private patientIdPipe: PatientIdFilterPipe,
@@ -57,10 +63,17 @@ export class ListReferralComponent implements OnInit, OnDestroy {
 
   ngReceiveReferral(referral: Referral) {
     console.log("Receiving referral: " + referral.Reason);
-    this.referralService.receiveReferral(referral).subscribe(ref =>
-      this.referrals[this.referrals.indexOf(referral)] = ref);
+    this.selectedReferral = referral;
+    this.modal.open().then((value) => {
+      console.log("Value: " + value + " selectedOECE Id was: " +this.selectedEoceId);
+    } );
   }
 
+  doReceive() {
+    console.log("Selected EOCE was: " + this.selectedEoceId);
+    this.referralService.receiveReferral(this.selectedReferral).subscribe(ref =>
+      this.referrals[this.referrals.indexOf(this.selectedReferral)] = ref);
+  }
   convertReasonClassification(classification) {
     for (let item in ReasonClassifications) {
       if (classification === item) {

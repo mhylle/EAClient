@@ -24,6 +24,8 @@ import {BasicPatientComponent} from "./model/patient/basic/basic";
 import {ReferralEpisodeOfCareElementComponent} from "./model/referral/list/ReferralEpisodeOfCareElement.component";
 import {AnimationService} from "./directives/animation-player.service";
 import {AnimationPlayerDirective} from "./directives/animation-player";
+import {Ng2Bs3ModalModule} from "ng2-bs3-modal/ng2-bs3-modal";
+import {EpisodeofcareSelectComponent} from "./model/episodeofcareelement/episodeofcare-select/episodeofcare-select.component";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},
@@ -51,7 +53,8 @@ const appRoutes: Routes = [
     PatientIdFilterPipe,
     BasicPatientComponent,
     ReferralEpisodeOfCareElementComponent,
-    AnimationPlayerDirective
+    AnimationPlayerDirective,
+    EpisodeofcareSelectComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
-    Ng2CompleterModule
+    Ng2CompleterModule,
+    Ng2Bs3ModalModule
   ],
   providers: [ContextService, PatientService, AnimationService],
   bootstrap: [AppComponent],
