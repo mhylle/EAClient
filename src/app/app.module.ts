@@ -21,10 +21,10 @@ import {PatientIdFilterPipe} from "./filters/PatientIdFilter";
 import {PatientService} from "./services/patient.service";
 import {BasicPatientComponent} from "./model/patient/basic/basic";
 import {ReferralEpisodeOfCareElementComponent} from "./model/referral/list/ReferralEpisodeOfCareElement.component";
-import {AnimationService} from "./directives/animation-player.service";
-import {AnimationPlayerDirective} from "./directives/animation-player";
 import {Ng2Bs3ModalModule} from "ng2-bs3-modal/ng2-bs3-modal";
 import {EpisodeofcareSelectComponent} from "./model/episodeofcareelement/episodeofcare-select/episodeofcare-select.component";
+import {AnimationPlayerDirective} from "./directives/animation/animation-player";
+import {AnimationService} from "./directives/animation/animation-player.service";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},

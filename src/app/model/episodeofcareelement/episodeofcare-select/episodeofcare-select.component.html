@@ -1,6 +1,6 @@
 <div class="container container-fluid" *ngIf="episodeOfCareElements">
   <div *ngIf="episodeOfCareElements.length > 4">
-    <select [(ngModel)]="selectedEoceId">
+    <select [(ngModel)]="selectedEoceId" >
       <option *ngFor="let episodeOfCareElement of episodeOfCareElements" [ngValue]="episodeOfCareElement.Id">
         {{episodeOfCareElement.Status}}
       </option>

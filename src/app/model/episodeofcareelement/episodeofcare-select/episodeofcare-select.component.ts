@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit, Output, Input} from '@angular/core';
 import {EpisodeOfCareElement} from "../EpisodeOfCareElement";
 import {EpisodeOfCareElementService} from "../../../services/episodeofcareelement.service";
 
@@ -10,6 +10,8 @@ import {EpisodeOfCareElementService} from "../../../services/episodeofcareelemen
 })
 export class EpisodeofcareSelectComponent implements OnInit {
   private episodeOfCareElements: EpisodeOfCareElement[];
+
+  @Input("selectedEoceId")
   @Output("selectedEoceId")
   private selectedEoceId: string;
 

@@ -18,18 +18,18 @@
     <div class="row">
       <div class="col-md-12"><referral-eoce [referral]="referral"></referral-eoce></div>
     </div>
-    <div class="row" [dialogAnchor]></div>
+    <div class="row"></div>
 
-    <div class="open-button" (click)="openDialogBox()">Choose Episode of Care</div>
+    <!--<div class="open-button" (click)="openDialogBox()">Choose Episode of Care</div>-->
   </div>
 </div>
-<modal #selectEpisodeOfCareElement (onClose)="doReceive()">
+<modal #selectEpisodeOfCareElement (onClose)="doReceive(selectedEoceId)">
   <modal-header [show-close]="true">
     <h4 class="modal-title">Select Episode of Care Element</h4>
   </modal-header>
   <modal-body>
     <div>The patient already has some episodes of care elements. Please select one or create a new.</div>
-    <episodeofcare-select [(ngModel)]="selectedEoceId"></episodeofcare-select>
+    <episodeofcare-select ([selectedEoceId])="selectedEoceId" name="selectedEoceIdOut"></episodeofcare-select>
   </modal-body>
   <modal-footer [show-default-buttons]="true"></modal-footer>
 </modal>

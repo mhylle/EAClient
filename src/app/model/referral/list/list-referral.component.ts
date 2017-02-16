@@ -40,7 +40,7 @@ export class ListReferralComponent implements OnInit, OnDestroy {
   private filteredReferrals: Referral[];
 
   subscription: Subscription;
-  @Input("selectedReferral")
+
   selectedEoceId: string;
   @ViewChild('selectEpisodeOfCareElement')
   modal:ModalComponent;
@@ -64,13 +64,12 @@ export class ListReferralComponent implements OnInit, OnDestroy {
   ngReceiveReferral(referral: Referral) {
     console.log("Receiving referral: " + referral.Reason);
     this.selectedReferral = referral;
-    this.modal.open().then((value) => {
-      console.log("Value: " + value + " selectedOECE Id was: " +this.selectedEoceId);
-    } );
+    this.modal.open();
   }
 
-  doReceive() {
-    console.log("Selected EOCE was: " + this.selectedEoceId);
+  doReceive(sel: any) {
+    console.log("Selected EOCE was: " + this.selectedEoceId + " sel: " + sel);
+
     this.referralService.receiveReferral(this.selectedReferral).subscribe(ref =>
       this.referrals[this.referrals.indexOf(this.selectedReferral)] = ref);
   }
@@ -82,6 +81,9 @@ export class ListReferralComponent implements OnInit, OnDestroy {
     }
   }
 
+  openDialogBox() {
+    this.modal.open();
+  }
   convertFreeChoiceClassification(classification) {
     for (let item in OwnChoiceClassifications) {
       if (classification === item) {
