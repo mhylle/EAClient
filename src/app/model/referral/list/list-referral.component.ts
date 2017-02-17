@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, ViewChild, Input} from "@angular/core";
+import {Component, OnInit, OnDestroy, ViewChild} from "@angular/core";
 import {Referral} from "../Referral";
 import {Subscription} from "rxjs";
 import {ReferralService} from "../../../services/referral.service";
@@ -8,13 +8,14 @@ import {ReasonClassifications} from "../../../classifications/CauseClassificatio
 import {OwnChoiceClassifications} from "../../../classifications/OwnChoiceClassifications";
 import {IdConverterService} from "../../../utilities/IdConverter";
 import {ModalComponent} from "ng2-bs3-modal/components/modal";
+import {EpisodeofcareSelectComponent} from "../../episodeofcareelement/episodeofcare-select/episodeofcare-select.component";
 
 @Component({
   moduleId: module.id,
   selector: 'list-referral',
   templateUrl: 'list-referral.component.html',
   styleUrls: ['list-referral.component.css'],
-  providers: [ReferralService, PatientIdFilterPipe, IdConverterService],
+  providers: [ReferralService, PatientIdFilterPipe, IdConverterService]
   // animations: [
   //   trigger('flyInOut', [
   //     state('in', style({transform: 'translateX(0)'})),
@@ -43,7 +44,9 @@ export class ListReferralComponent implements OnInit, OnDestroy {
 
   selectedEoceId: string;
   @ViewChild('selectEpisodeOfCareElement')
-  modal:ModalComponent;
+  modal: ModalComponent;
+
+  @ViewChild(EpisodeofcareSelectComponent) episodeOfCareSelectComponent: EpisodeofcareSelectComponent;
   private selectedReferral: Referral;
 
   constructor(private referralService: ReferralService,
@@ -68,11 +71,17 @@ export class ListReferralComponent implements OnInit, OnDestroy {
   }
 
   doReceive(sel: any) {
-    console.log("Selected EOCE was: " + this.selectedEoceId + " sel: " + sel);
+    if (this.episodeOfCareSelectComponent != null) {
+      let selectedEoceId2 = this.episodeOfCareSelectComponent.selectedEoceId;
+      console.log("found eocescSelected EOCE was: " + this.selectedEoceId + " sel: " + sel);
+    } else {
+      console.log("Selected EOCE was: " + this.selectedEoceId + " sel: " + sel);
+    }
 
     this.referralService.receiveReferral(this.selectedReferral).subscribe(ref =>
       this.referrals[this.referrals.indexOf(this.selectedReferral)] = ref);
   }
+
   convertReasonClassification(classification) {
     for (let item in ReasonClassifications) {
       if (classification === item) {
@@ -84,6 +93,7 @@ export class ListReferralComponent implements OnInit, OnDestroy {
   openDialogBox() {
     this.modal.open();
   }
+
   convertFreeChoiceClassification(classification) {
     for (let item in OwnChoiceClassifications) {
       if (classification === item) {

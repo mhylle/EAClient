@@ -11,9 +11,7 @@ import {EpisodeOfCareElementService} from "../../../services/episodeofcareelemen
 export class EpisodeofcareSelectComponent implements OnInit {
   private episodeOfCareElements: EpisodeOfCareElement[];
 
-  @Input("selectedEoceId")
-  @Output("selectedEoceId")
-  private selectedEoceId: string;
+  public selectedEoceId: string;
 
   constructor(private episodeOfCareElementService: EpisodeOfCareElementService) { }
 
