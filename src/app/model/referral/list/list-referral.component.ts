@@ -42,13 +42,6 @@ export class ListReferralComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
-  selectedEoceId: string;
-  @ViewChild('selectEpisodeOfCareElement')
-  modal: ModalComponent;
-
-  @ViewChild(EpisodeofcareSelectComponent) episodeOfCareSelectComponent: EpisodeofcareSelectComponent;
-  private selectedReferral: Referral;
-
   constructor(private referralService: ReferralService,
               private patientIdPipe: PatientIdFilterPipe,
               private contextService: ContextService) {
@@ -62,44 +55,6 @@ export class ListReferralComponent implements OnInit, OnDestroy {
     this.subscription = this.contextService.contextChange.subscribe(context => {
       this.filteredReferrals = this.patientIdPipe.transform(this.referrals, context);
     });
-  }
-
-  ngReceiveReferral(referral: Referral) {
-    console.log("Receiving referral: " + referral.Reason);
-    this.selectedReferral = referral;
-    this.modal.open();
-  }
-
-  doReceive(sel: any) {
-    if (this.episodeOfCareSelectComponent != null) {
-      let selectedEoceId2 = this.episodeOfCareSelectComponent.selectedEoceId;
-      console.log("found eocescSelected EOCE was: " + this.selectedEoceId + " sel: " + sel);
-    } else {
-      console.log("Selected EOCE was: " + this.selectedEoceId + " sel: " + sel);
-    }
-
-    this.referralService.receiveReferral(this.selectedReferral).subscribe(ref =>
-      this.referrals[this.referrals.indexOf(this.selectedReferral)] = ref);
-  }
-
-  convertReasonClassification(classification) {
-    for (let item in ReasonClassifications) {
-      if (classification === item) {
-        return ReasonClassifications[item];
-      }
-    }
-  }
-
-  openDialogBox() {
-    this.modal.open();
-  }
-
-  convertFreeChoiceClassification(classification) {
-    for (let item in OwnChoiceClassifications) {
-      if (classification === item) {
-        return OwnChoiceClassifications[item];
-      }
-    }
   }
 
   ngOnDestroy() {

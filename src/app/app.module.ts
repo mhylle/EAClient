@@ -25,6 +25,7 @@ import {Ng2Bs3ModalModule} from "ng2-bs3-modal/ng2-bs3-modal";
 import {EpisodeofcareSelectComponent} from "./model/episodeofcareelement/episodeofcare-select/episodeofcare-select.component";
 import {AnimationPlayerDirective} from "./directives/animation/animation-player";
 import {AnimationService} from "./directives/animation/animation-player.service";
+import {ReferralDetailsComponent} from "./model/referral/details/referral-details.component";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     BasicPatientComponent,
     ReferralEpisodeOfCareElementComponent,
     AnimationPlayerDirective,
-    EpisodeofcareSelectComponent
+    EpisodeofcareSelectComponent,
+    ReferralDetailsComponent
   ],
   imports: [
     BrowserModule,

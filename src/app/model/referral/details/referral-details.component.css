@@ -1,0 +1,22 @@
+.mh-card {
+  padding: 8px;
+  border-radius: 2px;
+
+  margin-bottom: 4px;
+  -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
+}
+.status {
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+
+}
+.status-R {
+  background: #e5b955;
+}
+.status-A {
+  background:  #4ea248;
+}
