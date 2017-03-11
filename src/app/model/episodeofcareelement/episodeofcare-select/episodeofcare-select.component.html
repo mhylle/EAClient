@@ -2,13 +2,13 @@
   <div *ngIf="episodeOfCareElements.length > 4">
     <select [(ngModel)]="selectedEoceId" >
       <option *ngFor="let episodeOfCareElement of episodeOfCareElements" [ngValue]="episodeOfCareElement.Id">
-        {{episodeOfCareElement.Status}}
+        {{episodeOfCareElement.episodeOfCareLabel}}
       </option>
     </select>
   </div>
   <div *ngIf="episodeOfCareElements.length <= 4">
     <div *ngFor="let episodeOfCareElement of episodeOfCareElements">
-      <input type="radio" value="{{episodeOfCareElement.Id}}" name="episodeOfCareSelection" [(ngModel)]="selectedEoceId">{{episodeOfCareElement.Status}}
+      <input type="radio" value="{{episodeOfCareElement.Id}}" name="episodeOfCareSelection" [(ngModel)]="selectedEoceId">{{episodeOfCareElement.episodeOfCareLabel}}
     </div>
   </div>
   <div><input type="radio" value="new" name="episodeOfCareSelection">Create new</div>

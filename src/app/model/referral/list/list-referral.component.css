@@ -7,21 +7,3 @@
   padding-top: 2px;
   padding-bottom: 2px;
 }
-
-.odd {
-  transition: all 0.1s ease-in-out;
-}
-.odd:hover {
-  transform: scale(1.02);
-  filter: brightness(95%);
-}
-
-
-.even {
-  transition: all 0.1s ease-in-out;
-}
-
-.even:hover {
-  transform: scale(1.02);
-  filter: brightness(95%);
-}

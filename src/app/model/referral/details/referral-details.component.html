@@ -1,22 +1,20 @@
-<div class="mh-card">
-  <div class="col-md-11">
+<div class="status status-{{referral.Status.substring(0,3)}}">
+  <div class="status-text text-left">{{referral.Status}}</div>
+  <div class="mh-card">
+      <div class="col-md-12">{{convertReasonClassification(referral.Reason)}}</div>
+      <div class="col-md-12" *ngIf="referral.Patient">
+        <basic-patient [patientId]="referral.Patient"></basic-patient>
+      </div>
+    <div class="col-md-1">
+      <button (click)="ngReceiveReferral(referral)">Receive</button>
+    </div>
     <div class="row">
-      <div class="status status-{{referral.Status.charAt(0)}} text-center">{{referral.Status.substring(0,2)}}</div>
+      <div class="col-md-12">
+        <referral-eoce [referral]="referral"></referral-eoce>
+      </div>
     </div>
-    <div class="col-md-12">{{convertReasonClassification(referral.Reason)}}</div>
-    <div class="col-md-12" *ngIf="referral.Patient">
-      <basic-patient [patientId]="referral.Patient"></basic-patient>
-    </div>
+    <div class="row"></div>
   </div>
-  <div class="col-md-1">
-    <button (click)="ngReceiveReferral(referral)">Receive</button>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <referral-eoce [referral]="referral"></referral-eoce>
-    </div>
-  </div>
-  <div class="row"></div>
 </div>
 <modal #selectEpisodeOfCareElement (onClose)="doReceive(selectedEoceId)">
   <modal-header [show-close]="true">
