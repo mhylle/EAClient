@@ -3,7 +3,7 @@
              let isOdd=odd;
              let isEven=even" class="row table-cell" [class.odd]="isOdd" [class.even]="isEven"
        animation-player [delay]="50+index*50" [duration]="50" [animation]="'fadeIn'" [play]="true">
-    <referral-details [referral]="referral"></referral-details>
+    <referral-details [referral]="referral" [active]="referral == selectedReferral" (click)="setSelectedReferral(referral)"></referral-details>
     <!--<div class="open-button" (click)="openDialogBox()">Choose Episode of Care</div>-->
   </div>
 </div>

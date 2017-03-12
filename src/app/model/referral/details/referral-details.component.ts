@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, ViewChild} from "@angular/core";
 import {Referral} from "../Referral";
-import {ReasonClassifications} from "../../../classifications/CauseClassifications";
+import {ReasonClassifications} from "../../../classifications/ReasonClassifications";
 import {OwnChoiceClassifications} from "../../../classifications/OwnChoiceClassifications";
 import {ModalComponent} from "ng2-bs3-modal/components/modal";
 import {ReferralService} from "../../../services/referral.service";
@@ -21,6 +21,11 @@ export class ReferralDetailsComponent implements OnInit {
   @Input()
   private referral: Referral;
 
+  @Input()
+  private active: boolean
+
+  selectedReferral: Referral;
+
   selectedEoceId: string;
 
   constructor(private referralService: ReferralService) {
@@ -40,6 +45,10 @@ export class ReferralDetailsComponent implements OnInit {
 
     this.referralService.receiveReferral(this.referral).subscribe(ref =>
       this.referral = ref);
+  }
+
+  selectReferral(referral: Referral) {
+    this.selectedReferral = referral;
   }
 
 

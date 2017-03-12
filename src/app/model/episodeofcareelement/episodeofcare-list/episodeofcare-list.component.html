@@ -1,14 +1,5 @@
 <div class="container container-fluid">
-  <div class="row">
-    <div class="col-md-2">Label</div>
-    <div class="col-md-2">Responsible Unit</div>
-    <div class="col-md-3">Start Time</div>
-    <div class="col-md-3">End Time</div>
-  </div>
   <div *ngFor="let episodeOfCareElement of episodeOfCareElements" class="row">
-    <div class="col-md-2">{{episodeOfCareElement.Status}}</div>
-    <div class="col-md-2">{{episodeOfCareElement.ResponsibleUnit}}</div>
-    <div class="col-md-3">{{episodeOfCareElement.Period.StartTime | date: 'dd-MM-yyyy HH:mm'}}</div>
-    <div class="col-md-3">{{episodeOfCareElement.Period.EndTime | date: 'dd-MM-yyyy HH:mm'}}</div>
+    <episodeofcareelement [episodeOfCareElement]="episodeOfCareElement"></episodeofcareelement>
   </div>
 </div>

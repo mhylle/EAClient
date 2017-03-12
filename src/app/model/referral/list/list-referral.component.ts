@@ -1,14 +1,10 @@
-import {Component, OnInit, OnDestroy, ViewChild} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Referral} from "../Referral";
 import {Subscription} from "rxjs";
 import {ReferralService} from "../../../services/referral.service";
 import {PatientIdFilterPipe} from "../../../filters/PatientIdFilter";
 import {ContextService} from "../../../services/context.service";
-import {ReasonClassifications} from "../../../classifications/CauseClassifications";
-import {OwnChoiceClassifications} from "../../../classifications/OwnChoiceClassifications";
 import {IdConverterService} from "../../../utilities/IdConverter";
-import {ModalComponent} from "ng2-bs3-modal/components/modal";
-import {EpisodeofcareSelectComponent} from "../../episodeofcareelement/episodeofcare-select/episodeofcare-select.component";
 
 @Component({
   moduleId: module.id,
@@ -41,6 +37,7 @@ export class ListReferralComponent implements OnInit, OnDestroy {
   private filteredReferrals: Referral[];
 
   subscription: Subscription;
+  private selectedReferral: Referral;
 
   constructor(private referralService: ReferralService,
               private patientIdPipe: PatientIdFilterPipe,
@@ -59,5 +56,13 @@ export class ListReferralComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  setSelectedReferral(referral: Referral) {
+    if (this.selectedReferral == referral) {
+      this.selectedReferral = null;
+    } else {
+      this.selectedReferral = referral;
+    }
   }
 }
