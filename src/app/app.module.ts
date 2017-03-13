@@ -26,6 +26,7 @@ import {EpisodeofcareSelectComponent} from "./model/episodeofcareelement/episode
 import {AnimationPlayerDirective} from "./directives/animation/animation-player";
 import {AnimationService} from "./directives/animation/animation-player.service";
 import {ReferralDetailsComponent} from "./model/referral/details/referral-details.component";
+import {MhCardComponent} from "./directives/mh-card/mhcard-component";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},
@@ -55,7 +56,8 @@ const appRoutes: Routes = [
     ReferralEpisodeOfCareElementComponent,
     AnimationPlayerDirective,
     EpisodeofcareSelectComponent,
-    ReferralDetailsComponent
+    ReferralDetailsComponent,
+    MhCardComponent
   ],
   imports: [
     BrowserModule,
