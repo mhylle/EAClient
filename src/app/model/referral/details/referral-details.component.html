@@ -1,17 +1,16 @@
 <div [ngClass]="{status_selected: active}">
   <div class="status status-{{referral.Status.substring(0,3)}}">
     <div class="row">
-      <div class="status-text text-left col-md-6">{{referral.Status}}</div>
-      <div class="status-text text-right col-md-6">Henvisning</div>
+      <div class="status-text text-left col-md-3">{{referral.Status}}</div>
+      <div class="col-md-9 text-right" *ngIf="!referral.Patient">No Patient associated</div>
+      <div class="col-md-9 text-right" *ngIf="referral.Patient">
+        <basic-patient [patientId]="referral.Patient" *ngIf="referral.Patient" class="status-text"></basic-patient>
+      </div>
     </div>
+
     <div class="mh-card">
       <div class="col-md-12">{{convertReasonClassification(referral.Reason)}}</div>
-      <div class="col-md-12" *ngIf="referral.Patient">
-        <basic-patient [patientId]="referral.Patient"></basic-patient>
-      </div>
-      <div class="col-md-12" *ngIf="!referral.Patient">
-        <div>No Patient associated</div>
-      </div>
+
       <div class="col-md-1">
         <button (click)="ngReceiveReferral(referral)">Receive</button>
       </div>
@@ -22,7 +21,6 @@
       </div>
       <div class="row"></div>
     </div>
-
   </div>
 </div>
 <modal #selectEpisodeOfCareElement (onClose)="doReceive(selectedEoceId)">

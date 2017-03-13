@@ -15,7 +15,7 @@ export class EpisodeOfCareElementComponent {
   constructor() {
   }
 
-  convertUnit(unit) {
+  convertUnit(unit) :string{
     for (let item in OrgCode) {
       if (unit === item) {
         return OrgCode[item];

@@ -19,7 +19,7 @@ import {PatientSearchComponent} from "./model/patient/search/patient-search.comp
 import {ContextService} from "./services/context.service";
 import {PatientIdFilterPipe} from "./filters/PatientIdFilter";
 import {PatientService} from "./services/patient.service";
-import {BasicPatientComponent} from "./model/patient/basic/basic";
+import {BasicPatientComponent} from "./model/patient/basic/basic.component";
 import {ReferralEpisodeOfCareElementComponent} from "./model/referral/list/ReferralEpisodeOfCareElement.component";
 import {Ng2Bs3ModalModule} from "ng2-bs3-modal/ng2-bs3-modal";
 import {EpisodeofcareSelectComponent} from "./model/episodeofcareelement/episodeofcare-select/episodeofcare-select.component";

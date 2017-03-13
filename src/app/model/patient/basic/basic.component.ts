@@ -6,6 +6,7 @@ import {Patient} from "../Patient";
   moduleId: module.id,
   selector: 'basic-patient',
   templateUrl: 'basic.component.html',
+  styleUrls: ['basic.component.css'],
   providers: [PatientService]
 })
 export class BasicPatientComponent implements OnInit {
