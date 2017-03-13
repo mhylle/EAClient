@@ -2,9 +2,9 @@
   <div class="status status-{{referral.Status.substring(0,3)}}">
     <div class="row">
       <div class="status-text text-left col-md-3">{{referral.Status}}</div>
-      <div class="col-md-9 text-right" *ngIf="!referral.Patient">No Patient associated</div>
+      <div class="col-md-9 text-right status-text" *ngIf="!referral.Patient">NO PATIENT ASSOCIATED</div>
       <div class="col-md-9 text-right" *ngIf="referral.Patient">
-        <basic-patient [patientId]="referral.Patient" *ngIf="referral.Patient" class="status-text"></basic-patient>
+        <basic-patient [patientId]="referral.Patient" *ngIf="referral.Patient" class="status-text" ></basic-patient>
       </div>
     </div>
 
