@@ -4,14 +4,17 @@ import {PatientService} from "../services/patient.service";
 
 @Injectable()
 export class IdConverterService {
-  private convertedPatient: Patient;
+  private _convertedPatient: Patient;
 
   constructor(private patientService: PatientService) {
   }
 
   convertToPatient(id: string) {
     this.patientService.getPatient(id).subscribe(res =>
-      this.convertedPatient = res
+      this._convertedPatient = res
     );
+  }
+  get convertedPatient() {
+    return this._convertedPatient;
   }
 }

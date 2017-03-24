@@ -34,10 +34,10 @@ import {IdConverterService} from "../../../utilities/IdConverter";
 })
 export class ListReferralComponent implements OnInit, OnDestroy {
   private referrals: Referral[];
-  private filteredReferrals: Referral[];
+  filteredReferrals: Referral[];
 
   subscription: Subscription;
-  private selectedReferral: Referral;
+  selectedReferral: Referral;
 
   constructor(private referralService: ReferralService,
               private patientIdPipe: PatientIdFilterPipe,

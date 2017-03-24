@@ -5,6 +5,8 @@ import {OwnChoiceClassifications} from "../../../classifications/OwnChoiceClassi
 import {ModalComponent} from "ng2-bs3-modal/components/modal";
 import {ReferralService} from "../../../services/referral.service";
 import {EpisodeofcareSelectComponent} from "../../episodeofcareelement/episodeofcare-select/episodeofcare-select.component";
+import {PatientService} from "../../../services/patient.service";
+import {IdConverterService} from "../../../utilities/IdConverter";
 
 @Component({
   moduleId: module.id,
@@ -19,16 +21,16 @@ export class ReferralDetailsComponent implements OnInit {
   modal: ModalComponent;
 
   @Input()
-  private referral: Referral;
+  public referral: Referral;
 
   @Input()
-  private active: boolean
+  public active: boolean;
 
   selectedReferral: Referral;
 
-  selectedEoceId: string;
+  selectedEOCEId: string;
 
-  constructor(private referralService: ReferralService) {
+  constructor(private referralService: ReferralService, private idConverter: IdConverterService) {
   }
 
   ngOnInit() {
@@ -37,10 +39,10 @@ export class ReferralDetailsComponent implements OnInit {
 
   doReceive(sel: any) {
     if (this.episodeOfCareSelectComponent != null) {
-      let selectedEoceId2 = this.episodeOfCareSelectComponent.selectedEoceId;
-      console.log("found eocescSelected EOCE was: " + this.selectedEoceId + " sel: " + sel);
+      // let selectedEoceId2 = this.episodeOfCareSelectComponent.selectedEOCEId;
+      console.log("found eocescSelected EOCE was: " + this.selectedEOCEId + " sel: " + sel);
     } else {
-      console.log("Selected EOCE was: " + this.selectedEoceId + " sel: " + sel);
+      console.log("Selected EOCE was: " + this.selectedEOCEId + " sel: " + sel);
     }
 
     this.referralService.receiveReferral(this.referral).subscribe(ref =>
@@ -66,6 +68,11 @@ export class ReferralDetailsComponent implements OnInit {
         return OwnChoiceClassifications[item];
       }
     }
+  }
+
+  convertToName(patientId) {
+    this.idConverter.convertToPatient(patientId);
+    return this.idConverter.convertedPatient;
   }
 
   ngReceiveReferral(referral: Referral) {

@@ -22,7 +22,6 @@ export class PatientComponent implements OnInit {
 
   ngOnInit(): void {
     this.episodeOfCareElementService.getEpisodeOfCareElements().subscribe(episodeOfCareElements => {
-      console.log(episodeOfCareElements);
       this.eocElms = episodeOfCareElements;
     });
   }
