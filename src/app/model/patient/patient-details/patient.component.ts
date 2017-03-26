@@ -13,8 +13,8 @@ export class PatientComponent implements OnInit {
 
   @Input()
   patient: Patient;
-  private eocElms: EpisodeOfCareElement[];
-  private selectedEoc: EpisodeOfCareElement;
+  public eocElms: EpisodeOfCareElement[];
+  public selectedEoc: EpisodeOfCareElement;
   result: any;
 
   constructor(private patientService: PatientService, private episodeOfCareElementService: EpisodeOfCareElementService) {

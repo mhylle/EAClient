@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 import {Patient} from "../model/patient/Patient";
 import {PatientService} from "../services/patient.service";
 
@@ -9,11 +9,13 @@ export class IdConverterService {
   constructor(private patientService: PatientService) {
   }
 
-  convertToPatient(id: string) {
-    this.patientService.getPatient(id).subscribe(res =>
-      this._convertedPatient = res
-    );
+  convertToPatient(id: string): Patient {
+    this.patientService.getPatient(id).subscribe(res => {
+      this._convertedPatient = res;
+    });
+    return this._convertedPatient;
   }
+
   get convertedPatient() {
     return this._convertedPatient;
   }

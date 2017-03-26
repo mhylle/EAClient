@@ -4,7 +4,8 @@
       <div class="status-text text-left col-md-3">{{cardStatus}}</div>
       <div class="col-md-9 text-right status-text" *ngIf="!cardName">NO NAME</div>
       <div class="col-md-9 text-right status-text" *ngIf="cardName">
-        {{cardName.toLocaleUpperCase()}}
+        :{{cardName}}:
+        <!--{{cardName.toLocaleUpperCase()}}-->
         <!--<basic-patient [patientId]="referral.Patient" *ngIf="referral.Patient" class="status-text"></basic-patient>-->
       </div>
     </div>

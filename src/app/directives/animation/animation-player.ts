@@ -1,5 +1,6 @@
-import {Directive, OnDestroy, Input, AnimationPlayer, ElementRef, Renderer} from "@angular/core";
+import {Directive, OnDestroy, Input, ElementRef, Renderer2} from "@angular/core";
 import {AnimationService} from "./animation-player.service";
+import {AnimationPlayer} from "@angular/animations";
 
 @Directive({
   selector: '[animation-player]'
@@ -29,7 +30,7 @@ export class AnimationPlayerDirective implements OnDestroy {
 
   private animation: AnimationPlayer;
 
-  constructor(private renderer: Renderer, private element: ElementRef, private animService: AnimationService) {
+  constructor(private renderer: Renderer2, private element: ElementRef, private animService: AnimationService) {
 
   }
 

@@ -27,6 +27,7 @@ import {AnimationPlayerDirective} from "./directives/animation/animation-player"
 import {AnimationService} from "./directives/animation/animation-player.service";
 import {ReferralDetailsComponent} from "./model/referral/details/referral-details.component";
 import {MhCardComponent} from "./directives/mh-card/mhcard-component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},
@@ -63,6 +64,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     Ng2CompleterModule,
