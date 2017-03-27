@@ -23,7 +23,7 @@ export class ReferralDetailsComponent implements OnInit {
   public referral: Referral;
 
   @Input()
-  public active: boolean;
+  public active: string;
 
 
   selectedReferral: Referral;

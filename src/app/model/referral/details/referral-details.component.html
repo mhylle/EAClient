@@ -1,12 +1,8 @@
-<mhcard [cardName]="referral.realPatient | async" [cardStatus]="referral.Status" [active]="active">
+<mhcard [cardName]="referral.realPatient != null ? referral.realPatient.Name: ''" [cardStatus]="referral.Status"
+        [active]="active">
   <div class="col-md-12">{{convertReasonClassification(referral.Reason)}}</div>
   <div class="col-md-1">
     <button (click)="ngReceiveReferral(referral)">Receive</button>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <referral-eoce [referral]="referral"></referral-eoce>
-    </div>
   </div>
 </mhcard>
 <modal #selectEpisodeOfCareElement (onClose)="doReceive(selectedEOCEId)">

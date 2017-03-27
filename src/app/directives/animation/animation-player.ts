@@ -36,15 +36,15 @@ export class AnimationPlayerDirective implements OnDestroy {
 
   setAnimation(leaving: boolean = false) {
     let animationName = leaving ? this.animationLeave : this.animationName;
-    this.animation = this.renderer.animate(
-      this.element.nativeElement.firstElementChild || this.element.nativeElement,
-      this.animService.getAnimation(animationName).startingStyles,
-      this.animService.getAnimation(animationName).keyframes,
-      this.duration,
-      this.delay,
-      this.easing
-    );
-    this.animation.pause();
+    // this.animation = this.renderer.animate(
+    //   this.element.nativeElement.firstElementChild || this.element.nativeElement,
+    //   this.animService.getAnimation(animationName).startingStyles,
+    //   this.animService.getAnimation(animationName).keyframes,
+    //   this.duration,
+    //   this.delay,
+    //   this.easing
+    // );
+    // this.animation.pause();
   }
 
   ngAfterContentInit() {

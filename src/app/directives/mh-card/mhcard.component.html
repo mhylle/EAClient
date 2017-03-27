@@ -1,12 +1,9 @@
-<div [ngClass]="{status_selected: active}">
-  <div class="status status-{{cardStatus.substring(0,3)}}">
+<div [@activation]="active">
+  <div *ngIf="cardStatus" class="status status-{{cardStatus.substring(0,3)}}">
     <div class="row">
       <div class="status-text text-left col-md-3">{{cardStatus}}</div>
       <div class="col-md-9 text-right status-text" *ngIf="!cardName">NO NAME</div>
-      <div class="col-md-9 text-right status-text" *ngIf="cardName">
-        :{{cardName}}:
-        <!--{{cardName.toLocaleUpperCase()}}-->
-        <!--<basic-patient [patientId]="referral.Patient" *ngIf="referral.Patient" class="status-text"></basic-patient>-->
+      <div class="col-md-9 text-right status-text" *ngIf="cardName">{{cardName.toLocaleUpperCase()}}
       </div>
     </div>
     <div class="mh-card">
