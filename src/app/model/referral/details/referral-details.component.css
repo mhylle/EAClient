@@ -1,3 +1,8 @@
+.referralDetails {
+  min-width: 250px;
+  max-width: 250px;
+}
+
 .status-ACC {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff3232+0,d6d6d6+28,7db9e8+100&1+0,1+28,0+100 */
   background: -moz-linear-gradient(-45deg, rgb(27, 79, 29) 0%, rgba(214, 214, 214, 0) 15%, rgba(125, 185, 232, 0) 100%); /* FF3.6-15 */

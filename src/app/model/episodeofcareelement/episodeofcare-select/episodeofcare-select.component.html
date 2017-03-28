@@ -2,7 +2,7 @@
   <div *ngIf="episodeOfCareElements.length > 4">
     <select [(ngModel)]="selectedEoceId" >
       <option *ngFor="let episodeOfCareElement of episodeOfCareElements" [ngValue]="episodeOfCareElement.Id">
-        {{episodeOfCareElement.episodeOfCareLabel}}
+        {{episodeOfCareElement.Status}}
       </option>
     </select>
   </div>

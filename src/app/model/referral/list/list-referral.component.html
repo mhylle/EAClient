@@ -1,7 +1,5 @@
 <div class="container">
-  <div *ngFor="let referral of filteredReferrals;let index =index;
-             let isOdd=odd;
-             let isEven=even" class="row table-cell" [class.odd]="isOdd" [class.even]="isEven">
+  <div *ngFor="let referral of filteredReferrals;let index =index;" class="row table-cell">
     <referral-details [referral]="referral" [active]="referral == selectedReferral? 'active': 'inactive'" (click)="setSelectedReferral(referral)"></referral-details>
     <!--<div class="open-button" (click)="openDialogBox()">Choose Episode of Care</div>-->
   </div>
