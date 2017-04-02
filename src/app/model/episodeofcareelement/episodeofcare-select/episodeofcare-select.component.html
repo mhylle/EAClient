@@ -1,15 +1,30 @@
-<div class="container container-fluid" *ngIf="episodeOfCareElements">
-  <div *ngIf="episodeOfCareElements.length > 4">
-    <select [(ngModel)]="selectedEoceId" >
-      <option *ngFor="let episodeOfCareElement of episodeOfCareElements" [ngValue]="episodeOfCareElement.Id">
-        {{episodeOfCareElement.Status}}
-      </option>
-    </select>
-  </div>
-  <div *ngIf="episodeOfCareElements.length <= 4">
-    <div *ngFor="let episodeOfCareElement of episodeOfCareElements">
-      <input type="radio" value="{{episodeOfCareElement.Id}}" name="episodeOfCareSelection" [(ngModel)]="selectedEoceId">{{episodeOfCareElement.episodeOfCareLabel}}
+<form #modalForm="ngForm">
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">Select Episode of Care Element</h4>
+  </modal-header>
+  <modal-body>
+    <div>The patient already has some episodes of care elements. Please select one or create a new.</div>
+    <div class="container container-fluid" *ngIf="episodeOfCareElements">
+      <form>
+        <div *ngIf="episodeOfCareElements.length > 4">
+          <select [(ngModel)]="selectedEoceId">
+            <option *ngFor="let episodeOfCareElement of episodeOfCareElements" [ngValue]="episodeOfCareElement.Id">
+              {{episodeOfCareElement.Status}}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="episodeOfCareElements.length <= 4">
+          <div *ngFor="let episodeOfCareElement of episodeOfCareElements">
+            <input type="radio" value="{{episodeOfCareElement.Id}}" name="episodeOfCareSelection"
+                   [(ngModel)]="selectedEoceId">{{episodeOfCareElement.Status}}
+          </div>
+        </div>
+        <div><input type="radio" value="new" name="episodeOfCareSelection" [(ngModel)]="selectedEoceId">Create new</div>
+      </form>
     </div>
-  </div>
-  <div><input type="radio" value="new" name="episodeOfCareSelection">Create new</div>
-</div>
+  </modal-body>
+  <modal-footer>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="dismiss()">Cancel</button>
+    <button type="button" class="btn btn-primary"  data-dismiss="modal" [disabled]="!modalForm.valid" (click)="close()">Save</button>
+  </modal-footer>
+</form>

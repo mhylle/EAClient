@@ -23,7 +23,7 @@ export class PatientService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let body = JSON.stringify(patient);
-    console.log('Create Patient: ' + body)
+    console.log('Create Patient: ' + body);
     return this.http.post(this.patientsUrl, body, {headers: headers});
   }
 

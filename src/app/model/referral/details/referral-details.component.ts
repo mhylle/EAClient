@@ -6,6 +6,7 @@ import {ModalComponent} from "ng2-bs3-modal/components/modal";
 import {ReferralService} from "../../../services/referral.service";
 import {EpisodeofcareSelectComponent} from "../../episodeofcareelement/episodeofcare-select/episodeofcare-select.component";
 import {PatientService} from "../../../services/patient.service";
+import {Router} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -25,36 +26,37 @@ export class ReferralDetailsComponent implements OnInit {
   @Input()
   public active: string;
 
-
   selectedReferral: Referral;
 
-  selectedEOCEId: string;
+  selectedEoceId: string;
 
-  constructor(private referralService: ReferralService, private patientService: PatientService) {
+
+  constructor(private router: Router, private referralService: ReferralService, private patientService: PatientService) {
   }
 
   ngOnInit() {
-    this.patientService.getPatient(this.referral.Patient).subscribe(pat => {
-      console.log("setting real patient on referral..");
-      this.referral.realPatient = pat;
-    })
+    if (this.referral.Patient != null) {
+      this.patientService.getPatient(this.referral.Patient).subscribe(pat => {
+        this.referral.realPatient = pat;
+      });
+    }
   }
 
-  doReceive(sel: any) {
-    if (this.episodeOfCareSelectComponent != null) {
-      console.log("found eocescSelected EOCE was: " + this.selectedEOCEId + " sel: " + sel);
+  doReceive(episodeOfCareElement: string) {
+    console.log(episodeOfCareElement);
+    this.modal.close();
+    if (episodeOfCareElement == "new") {
+      this.router.navigate(["/createEpisodeOfCareElement"]);
     } else {
-      console.log("Selected EOCE was: " + this.selectedEOCEId + " sel: " + sel);
+      console.log('had an event, add it to the referral');
+      this.receiveReferral();
     }
+    // if (this.episodeOfCareSelectComponent != null) {
+    //   console.log("found eocescSelected EOCE was: " + this.selectedEoceId + " sel: " + sel);
+    // } else {
+    //   console.log("Selected EOCE was: " + this.selectedEoceId + " sel: " + sel);
+    // }
 
-    this.referralService.receiveReferral(this.referral).subscribe(ref => {
-      console.log("received referral");
-      this.referral = ref;
-      this.patientService.getPatient(this.referral.Patient).subscribe(pat => {
-        console.log("setting real patient on referral..");
-        this.referral.realPatient = pat;
-      })
-    });
   }
 
   selectReferral(referral: Referral) {
@@ -83,13 +85,15 @@ export class ReferralDetailsComponent implements OnInit {
     // return this.idConverter.convertedPatient;
   }
 
-  ngReceiveReferral(referral: Referral) {
-    console.log("Receiving referral: " + referral.Reason);
-    this.modal.open();
+  receiveReferral() {
+    this.referralService.receiveReferral(this.referral).subscribe((ref : Referral)=> {
+      this.referral = ref;
+      // check if the referral was received properly
+      if (ref.Status.toString() == "REJECTED") {
+        this.modal.open();
+      } else {
+        console.log("Refererral was received as it already has an episode of care..");
+      }
+    });
   }
-
-  openDialogBox() {
-    this.modal.open();
-  }
-
 }

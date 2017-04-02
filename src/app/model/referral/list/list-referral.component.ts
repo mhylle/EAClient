@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Referral} from "../Referral";
 import {Subscription} from "rxjs";
 import {ReferralService} from "../../../services/referral.service";
@@ -12,25 +12,6 @@ import {IdConverterService} from "../../../utilities/IdConverter";
   templateUrl: 'list-referral.component.html',
   styleUrls: ['list-referral.component.css'],
   providers: [ReferralService, PatientIdFilterPipe, IdConverterService]
-  // animations: [
-  //   trigger('flyInOut', [
-  //     state('in', style({transform: 'translateX(0)'})),
-  //     transition('void => *', [
-  //       animate(150, keyframes([
-  //         style({opacity: 0, transform: 'translateX(-100%)', offset: 0}),
-  //         style({opacity: 1, transform: 'translateX(15px', offset: 0.3}),
-  //         style({opacity: 1, transform: 'translateX(0)', offset: 1.0})
-  //       ]))
-  //     ]),
-  //     transition('* => void', [
-  //       animate(150, keyframes([
-  //         style({opacity: 1, transform: 'translateX(0)', offset: 0}),
-  //         style({opacity: 1, transform: 'translateX(-15px)', offset: 0.7}),
-  //         style({opacity: 0, transform: 'translateX(100%)', offset: 1.0})
-  //       ]))
-  //     ])
-  //   ])
-  // ]
 })
 export class ListReferralComponent implements OnInit, OnDestroy {
   private referrals: Referral[];
