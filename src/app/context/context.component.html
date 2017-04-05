@@ -1,5 +1,7 @@
 <div>
   <div *ngIf="patientContext">{{patientContext.AlternativeId}}</div>
   <div *ngIf="patientContext">{{patientContext.Name}}</div>
-  <div *ngIf="!patientContext">Ingen context</div>
+  <div *ngIf="!patientContext">Ingen Patient context</div>
+  <div *ngIf="referralContext">{{referralContext.Reason}}</div>
+  <div *ngIf="!referralContext">Ingen Referral context</div>
 </div>

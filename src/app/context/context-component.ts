@@ -1,7 +1,10 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Patient} from "../model/patient/Patient";
-import {ContextService} from "../services/context.service";
+
 import {Subscription} from "rxjs";
+import {Referral} from "../model/referral/Referral";
+import {PatientContextService} from "../services/patient.context.service";
+import {ReferralContextService} from "../services/referral.context.service";
 
 @Component({
   moduleId: module.id,
@@ -11,18 +14,24 @@ import {Subscription} from "rxjs";
 })
 export class ContextComponent implements OnInit, OnDestroy {
   public patientContext: Patient;
-  subscription: Subscription;
+  public referralContext: Referral;
+  patientSubscription: Subscription;
+  referralSubscription: Subscription;
 
-  constructor(private contextService: ContextService) {
+  constructor(private patientContextService: PatientContextService, private referralContextService: ReferralContextService) {
   }
 
   ngOnInit() {
-    this.subscription = this.contextService.contextChange.subscribe(context => {
+    this.patientSubscription = this.patientContextService.contextChange.subscribe(context => {
       this.patientContext = context;
+    });
+    this.referralSubscription = this.referralContextService.contextChange.subscribe(context => {
+      this.referralContext = context;
     });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.patientSubscription.unsubscribe();
+    this.referralSubscription.unsubscribe();
   }
 }

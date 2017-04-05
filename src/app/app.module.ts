@@ -16,7 +16,6 @@ import {ListReferralComponent} from "./model/referral/list/list-referral.compone
 import {ContextComponent} from "./context/context-component";
 import {Ng2CompleterModule} from "ng2-completer";
 import {PatientSearchComponent} from "./model/patient/search/patient-search.component";
-import {ContextService} from "./services/context.service";
 import {PatientIdFilterPipe} from "./filters/PatientIdFilter";
 import {PatientService} from "./services/patient.service";
 import {BasicPatientComponent} from "./model/patient/basic/basic.component";
@@ -28,6 +27,8 @@ import {AnimationService} from "./directives/animation/animation-player.service"
 import {ReferralDetailsComponent} from "./model/referral/details/referral-details.component";
 import {MhCardComponent} from "./directives/mh-card/mhcard-component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {PatientContextService} from "./services/patient.context.service";
+import {ReferralContextService} from "./services/referral.context.service";
 
 const appRoutes: Routes = [
   {path: 'list-referrals', component: ListReferralComponent},
@@ -70,7 +71,7 @@ const appRoutes: Routes = [
     Ng2CompleterModule,
     Ng2Bs3ModalModule
   ],
-  providers: [ContextService, PatientService, AnimationService],
+  providers: [PatientContextService, ReferralContextService, PatientService, AnimationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

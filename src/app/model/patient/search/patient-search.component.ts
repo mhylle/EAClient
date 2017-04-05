@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {CompleterData, CompleterService} from "ng2-completer";
 import {Patient} from "../Patient";
 import {PatientService} from "../../../services/patient.service";
-import {ContextService} from "../../../services/context.service";
+import {PatientContextService} from "../../../services/patient.context.service";
 
 
 @Component({
@@ -15,8 +15,9 @@ export class PatientSearchComponent implements OnInit {
   private dataService: CompleterData;
   private patients: Patient[];
 
-  constructor(private completerService: CompleterService, private patientService: PatientService, private contextService: ContextService) {
-
+  constructor(private completerService: CompleterService,
+              private patientService: PatientService,
+              private patientContextService: PatientContextService) {
   }
 
   ngOnInit() {
@@ -31,14 +32,14 @@ export class PatientSearchComponent implements OnInit {
     console.log(this.searchStr);
     for (let i = 0; i < this.patients.length; i++) {
       let obj = this.patients[i];
-      if (obj.AlternativeId === this.searchStr){
+      if (obj.AlternativeId === this.searchStr) {
         console.log("Found patient, trying to set to context");
-        this.contextService.setContext(obj);
+        this.patientContextService.setContext(obj);
       }
     }
   }
 
   clearContext() {
-    this.contextService.setContext(null);
+    this.patientContextService.setContext(null);
   }
 }

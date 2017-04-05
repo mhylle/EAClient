@@ -1,12 +1,12 @@
 import {Injectable} from "@angular/core";
-import {Patient} from "../model/patient/Patient";
 import {Observable, Observer} from "rxjs";
+import {Referral} from "../model/referral/Referral";
 
 @Injectable()
-export class ContextService {
+export class ReferralContextService {
 
-  private _context: Patient = null;
-  contextChange: Observable<Patient>;
+  private _context: Referral = null;
+  contextChange: Observable<Referral>;
   private _observer: Observer<any>;
 
   constructor() {
@@ -19,10 +19,10 @@ export class ContextService {
     return this._context;
   }
 
-  setContext(patient: Patient) {
-    this._context = patient;
+  setContext(referral: Referral) {
+    this._context = referral;
     if (this._observer) {
-      this._observer.next(patient);
+      this._observer.next(referral);
     }
   }
 }

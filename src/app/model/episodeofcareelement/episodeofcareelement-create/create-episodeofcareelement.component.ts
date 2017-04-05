@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {EpisodeOfCareElementService} from "../../../services/episodeofcareelement.service";
-import {ReferralService} from "../../../services/referral.service";
+import {ReferralContextService} from "../../../services/referral.context.service";
 import {Subscription} from "rxjs";
-import {Route} from "@angular/router";
+import {Referral} from "../../referral/Referral";
 
 @Component({
   selector: 'create-episodeofcareelement',
@@ -18,16 +18,21 @@ export class CreateEpisodeOfCareElementComponent implements OnInit {
   public endTime: any;
 
   public result: any;
-  // private subscription: Subscription;
-  // private route: Route;
+  private referralSubscription: Subscription;
+  private referralContext: Referral;
 
-  constructor(private episodeOfCareElementService: EpisodeOfCareElementService) {
+  constructor(private episodeOfCareElementService: EpisodeOfCareElementService,
+  private referralContextService: ReferralContextService) {
 
   }
 
   ngOnInit(): void {
-    // this.subscription = this.route
-    //   .data.subscribe(referral => console.log(referral.Name));
+    this.referralSubscription = this.referralContextService.contextChange.subscribe(context => {
+      this.referralContext = context;
+      if (this.episodeOfCareLabel == null || this.episodeOfCareLabel == "") {
+        this.episodeOfCareLabel = context.Reason;
+      }
+    });
   }
 
 

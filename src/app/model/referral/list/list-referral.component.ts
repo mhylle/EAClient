@@ -3,8 +3,8 @@ import {Referral} from "../Referral";
 import {Subscription} from "rxjs";
 import {ReferralService} from "../../../services/referral.service";
 import {PatientIdFilterPipe} from "../../../filters/PatientIdFilter";
-import {ContextService} from "../../../services/context.service";
 import {IdConverterService} from "../../../utilities/IdConverter";
+import {PatientContextService} from "../../../services/patient.context.service";
 
 @Component({
   moduleId: module.id,
@@ -22,7 +22,7 @@ export class ListReferralComponent implements OnInit, OnDestroy {
 
   constructor(private referralService: ReferralService,
               private patientIdPipe: PatientIdFilterPipe,
-              private contextService: ContextService) {
+              private patientContextService: PatientContextService) {
   }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class ListReferralComponent implements OnInit, OnDestroy {
       this.referrals = referrals;
       this.filteredReferrals = referrals;
     });
-    this.subscription = this.contextService.contextChange.subscribe(context => {
+    this.subscription = this.patientContextService.contextChange.subscribe(context => {
       this.filteredReferrals = this.patientIdPipe.transform(this.referrals, context);
     });
   }

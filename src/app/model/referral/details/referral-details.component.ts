@@ -7,6 +7,7 @@ import {ReferralService} from "../../../services/referral.service";
 import {EpisodeofcareSelectComponent} from "../../episodeofcareelement/episodeofcare-select/episodeofcare-select.component";
 import {PatientService} from "../../../services/patient.service";
 import {Router} from "@angular/router";
+import {ReferralContextService} from "../../../services/referral.context.service";
 
 @Component({
   moduleId: module.id,
@@ -31,7 +32,10 @@ export class ReferralDetailsComponent implements OnInit {
   selectedEoceId: string;
 
 
-  constructor(private router: Router, private referralService: ReferralService, private patientService: PatientService) {
+  constructor(private router: Router,
+              private referralService: ReferralService,
+              private patientService: PatientService,
+              private referralContextService: ReferralContextService) {
   }
 
   ngOnInit() {
@@ -46,6 +50,7 @@ export class ReferralDetailsComponent implements OnInit {
     console.log(episodeOfCareElement);
     this.modal.close();
     if (episodeOfCareElement == "new") {
+      this.referralContextService.setContext(this.referral);
       this.router.navigate(["/createEpisodeOfCareElement"]);
     } else {
       console.log('had an event, add it to the referral');
@@ -80,7 +85,7 @@ export class ReferralDetailsComponent implements OnInit {
   }
 
   receiveReferral() {
-    this.referralService.receiveReferral(this.referral).subscribe((ref : Referral)=> {
+    this.referralService.receiveReferral(this.referral).subscribe((ref: Referral) => {
       this.referral = ref;
       // check if the referral was received properly
       if (ref.Status.toString() == "REJECTED") {
