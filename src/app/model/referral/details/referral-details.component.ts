@@ -51,12 +51,6 @@ export class ReferralDetailsComponent implements OnInit {
       console.log('had an event, add it to the referral');
       this.receiveReferral();
     }
-    // if (this.episodeOfCareSelectComponent != null) {
-    //   console.log("found eocescSelected EOCE was: " + this.selectedEoceId + " sel: " + sel);
-    // } else {
-    //   console.log("Selected EOCE was: " + this.selectedEoceId + " sel: " + sel);
-    // }
-
   }
 
   selectReferral(referral: Referral) {
