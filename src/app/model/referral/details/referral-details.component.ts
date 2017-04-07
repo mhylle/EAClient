@@ -4,7 +4,7 @@ import {ReasonClassifications} from "../../../classifications/ReasonClassificati
 import {OwnChoiceClassifications} from "../../../classifications/OwnChoiceClassifications";
 import {ModalComponent} from "ng2-bs3-modal/components/modal";
 import {ReferralService} from "../../../services/referral.service";
-import {EpisodeofcareSelectComponent} from "../../episodeofcareelement/episodeofcare-select/episodeofcare-select.component";
+import {EpisodeofcareSelectComponent} from "../../episodeofcareelement/select/episodeofcare-select.component";
 import {PatientService} from "../../../services/patient.service";
 import {Router} from "@angular/router";
 import {ReferralContextService} from "../../../services/referral.context.service";

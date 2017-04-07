@@ -6,8 +6,8 @@ import {Referral} from "../../referral/Referral";
 
 @Component({
   selector: 'create-episodeofcareelement',
-  templateUrl: 'create-episodeofcareelement.component.html',
-  styleUrls: ['create-episodeofcareelement.component.css'],
+  templateUrl: 'create.component.html',
+  styleUrls: ['create.component.css'],
   providers: [EpisodeOfCareElementService]
 })
 export class CreateEpisodeOfCareElementComponent implements OnInit {
