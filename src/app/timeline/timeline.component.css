@@ -1,0 +1,11 @@
+.timeline {
+  width: 4096px;
+}
+.headercell {
+  padding-left: 50px;
+  padding-right: 50px;
+  min-width: 100px;
+  max-width: 100px;
+  background-color: #8f949a;
+  border: 1px solid #4c515d;
+}

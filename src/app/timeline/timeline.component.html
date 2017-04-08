@@ -1,0 +1,6 @@
+<div class="timeline">
+<span *ngFor="let i of arr(increments).fill(1);let idx = index" class="headercell">
+  {{increments - (increments -idx)+1}}
+</span>
+  <div>{{start | date: 'dd/MM-yyyy'}} - {{end| date: 'dd/MM-yyyy'}}</div>
+</div>

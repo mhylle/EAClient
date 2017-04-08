@@ -29,8 +29,11 @@ import {MhCardComponent} from "./directives/mh-card/mhcard-component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {PatientContextService} from "./services/patient.context.service";
 import {ReferralContextService} from "./services/referral.context.service";
+import {EpisodeOfCareComponent} from "./model/episodeofcare/episodeofcare.component";
+import {TimelineComponent} from "./timeline/timeline.component";
 
 const appRoutes: Routes = [
+  {path: 'episodeofcare', component: EpisodeOfCareComponent},
   {path: 'list-referrals', component: ListReferralComponent},
   {path: 'referral', component: CreateReferralComponent},
   {path: 'patients', component: PatientListComponent},
@@ -46,6 +49,7 @@ const appRoutes: Routes = [
     ContextComponent,
     PatientListComponent,
     PatientComponent,
+    EpisodeOfCareComponent,
     EpisodeOfCareElementComponent,
     CreatePatientComponent,
     CreateEpisodeOfCareElementComponent,
@@ -59,7 +63,8 @@ const appRoutes: Routes = [
     AnimationPlayerDirective,
     EpisodeofcareSelectComponent,
     ReferralDetailsComponent,
-    MhCardComponent
+    MhCardComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgbModule.forRoot(),
     Ng2CompleterModule,
-    Ng2Bs3ModalModule
+    Ng2Bs3ModalModule,
+
   ],
   providers: [PatientContextService, ReferralContextService, PatientService, AnimationService],
   bootstrap: [AppComponent],
