@@ -1,6 +1,16 @@
 <div class="timeline">
-<span *ngFor="let i of arr(increments).fill(1);let idx = index" class="headercell">
-  {{increments - (increments -idx)+1}}
-</span>
-  <div>{{start | date: 'dd/MM-yyyy'}} - {{end| date: 'dd/MM-yyyy'}}</div>
+  <div class="content-body-wrapper">
+    <div class="content-body">
+      <div class="timelineInfoCell">
+        <div class="headerCell">Titel</div>
+        <div *ngFor="let episodeOfCare of episodesOfCare"><span>Forløb:</span> <span *ngIf="episodeOfCare.realCondition">{{convertConditionCode(episodeOfCare.realCondition.Code)}}</span></div>
+      </div>
+      <div class="timelineCell" *ngFor="let unit of units">
+        <div class="headerCell">{{unit | date: 'dd/MM-yyyy'}}</div>
+        <div *ngFor="let episodeOfCare of episodesOfCare">
+          <span [ngClass]="{eventClass: hasContent(unit, episodeOfCare), nonEventClass: !hasContent(unit, episodeOfCare)}"></span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

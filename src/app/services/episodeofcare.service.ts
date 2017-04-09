@@ -19,4 +19,10 @@ export class EpisodeOfCareService {
     return this.http.get(this.episodeOfCareUrl)
       .map(res => res.json());
   }
+
+  getEpisodeOfCare(id: string) {
+    console.log("Get Episode Of Care: " + this.episodeOfCareUrl + id);
+    return this.http.get(this.episodeOfCareUrl + id)
+      .map(res => res.json());
+  }
 }

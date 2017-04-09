@@ -1,9 +1,10 @@
-import {EpisodeOfCareElement} from "../episodeofcareelement/EpisodeOfCareElement";
+import {EpisodeOfCare} from "../episodeofcare/EpisodeOfCare";
 export interface Patient {
   Id?: string;
   AlternativeId: string;
   Name: string;
   Gender: string;
   Birthday?: Date;
-  EpisodeOfCareElements?: EpisodeOfCareElement[];
+  EpisodesOfCare?: EpisodeOfCare[];
+  realEpisodesOfCare?: EpisodeOfCare[];
 }

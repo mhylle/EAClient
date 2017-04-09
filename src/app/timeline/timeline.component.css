@@ -1,11 +1,41 @@
 .timeline {
   width: 4096px;
+  padding-top: 8px;
 }
-.headercell {
-  padding-left: 50px;
-  padding-right: 50px;
-  min-width: 100px;
-  max-width: 100px;
-  background-color: #8f949a;
-  border: 1px solid #4c515d;
+.headerCell {
+  background-color: #3b7d97;
+  color: white;
+  border: 1px solid white;
+}
+
+.content-body-wrapper {
+  display: table;
+  border-collapse: collapse;
+}
+
+.content-body {
+  padding-top: 20px;
+  display: table-row;
+}
+
+.timelineInfoCell {
+  display: table-cell;
+  width: 120px;
+  padding:0;
+  margin:0;
+}
+
+.timelineCell {
+  display: table-cell;
+  padding:0;
+  margin:0;
+  width: 80px;
+}
+
+.eventClass {
+  background-color: #0a6cd6;
+}
+
+.nonEventClass {
+  background-color: #cd0a0a;
 }

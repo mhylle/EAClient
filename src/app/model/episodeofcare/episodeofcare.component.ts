@@ -17,9 +17,9 @@ export class EpisodeOfCareComponent implements OnInit {
 
   constructor(private episodeOfCareService: EpisodeOfCareService) {
     this.start = new Date();
-    this.start.setMonth(this.start.getMonth() -1);
+    this.start.setDate(this.start.getDate() -14);
     this.end = new Date();
-    this.end.setDate(this.end.getDate()+2);
+    this.end.setDate(this.end.getDate()+5);
 
   }
 

@@ -33,7 +33,7 @@ import {EpisodeOfCareComponent} from "./model/episodeofcare/episodeofcare.compon
 import {TimelineComponent} from "./timeline/timeline.component";
 
 const appRoutes: Routes = [
-  {path: 'episodeofcare', component: EpisodeOfCareComponent},
+  {path: 'episodesofcare', component: EpisodeOfCareComponent},
   {path: 'list-referrals', component: ListReferralComponent},
   {path: 'referral', component: CreateReferralComponent},
   {path: 'patients', component: PatientListComponent},
