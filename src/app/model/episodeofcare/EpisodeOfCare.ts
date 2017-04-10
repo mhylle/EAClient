@@ -4,8 +4,8 @@ import {Patient} from "../patient/Patient";
 import {EpisodeOfCareElement} from "../episodeofcareelement/EpisodeOfCareElement";
 export interface EpisodeOfCare {
   Id?: string;
-  EpisodeOfCareElements :EpisodeOfCareElement[];
-  Condition :string;
+  EpisodeOfCareElements: EpisodeOfCareElement[];
+  Condition: Condition;
   Period: Period;
   Status: string;
   realCondition?: Condition;

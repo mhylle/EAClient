@@ -17,6 +17,11 @@ import {EpisodeOfCareService} from "../services/episodeofcare.service";
 
 export class TimelineComponent implements OnInit {
   private patientSubscription: Subscription;
+  @Input()
+  start: Date;
+  @Input()
+  end: Date;
+
 
   @Input()
   span: string = "d";
@@ -24,50 +29,31 @@ export class TimelineComponent implements OnInit {
   private increments: number;
 
   private patientContext: Patient;
+  private episodesOfCare: any[];
+
+  private convertedConditionCode: string;
+
 
   constructor(private patientContextService: PatientContextService, private patientService: PatientService, private episodeOfCareService: EpisodeOfCareService, private conditionService: ConditionService) {
   }
 
   ngOnInit(): void {
     this.patientSubscription = this.patientContextService.contextChange.subscribe(context => {
-      let start: Date = new Date();
-      let end: Date = new Date();
       this.patientContext = context;
 
-      let episodesOfCare = context.EpisodesOfCare;
-
-      if (episodesOfCare.length > 0) {
-        for (let i = 0; i < episodesOfCare.length; i++) {
-          let episodeOfCare = episodesOfCare[i];
-          if (start == null) {
-            start = episodeOfCare.Period.StartTime;
-          } else {
-            let epoStartTime = new Date(episodeOfCare.Period.StartTime);
-            if (start.getTime() > epoStartTime .getTime()) {
-              start = epoStartTime ;
-            }
-          }
-
-          if (end == null) {
-            end = episodeOfCare.Period.EndTime;
-          } else {
-            if (episodeOfCare.Period.EndTime != null) {
-              let epoEndTime = new Date(episodeOfCare.Period.EndTime);
-              if (end.getTime() < epoEndTime.getTime()) {
-                end = epoEndTime;
-              }
-            }
-          }
-        }
+      try {
+        this.episodesOfCare = context.EpisodesOfCare;
+      } catch (e) {
+        console.log(e);
       }
 
-      if (end == null) {
-        end = new Date();
-        end.setDate(end.getDate() + 2);
+      if (this.end == null) {
+        this.end = new Date();
+        this.end.setDate(this.end.getDate() + 2);
       }
 
-      let endTime = end.getTime();
-      let startTime = start.getTime();
+      let endTime = this.end.getTime();
+      let startTime = this.start.getTime();
       let dif = endTime - startTime;
       console.log(dif);
       switch (this.span) {
@@ -76,8 +62,8 @@ export class TimelineComponent implements OnInit {
           console.log(this.increments);
           for (let i = 0; i < this.increments; i++) {
             let unit = new Date();
-            unit.setTime(start.getTime());
-            unit.setDate(start.getDate() + i)
+            unit.setTime(this.start.getTime());
+            unit.setDate(this.start.getDate() + i)
             this.units.push(unit);
           }
           break;
@@ -109,21 +95,21 @@ export class TimelineComponent implements OnInit {
       // });
 
 
-      // if (this.episodesOfCare) {
-      //   for (let i = 0; i < this.episodesOfCare.length; i++) {
-      //     let episodeOfCare = this.episodesOfCare[i];
-      //     this.conditionService.getCondition(episodeOfCare.Condition).subscribe(condition => {
-      //         console.log("condition set");
-      //         episodeOfCare.realCondition = condition;
-      //       }
-      //     );
-      //     this.patientService.getPatient(episodeOfCare.Patient).subscribe(patient => {
-      //         console.log("patient set");
-      //         episodeOfCare.realPatient = patient;
-      //       }
-      //     )
-      //   }
-      // }
+      if (this.episodesOfCare) {
+        for (let i = 0; i < this.episodesOfCare.length; i++) {
+          let episodeOfCare = this.episodesOfCare[i];
+          this.conditionService.getCondition(episodeOfCare.Condition).subscribe(condition => {
+              console.log("condition set");
+              episodeOfCare.realCondition = condition;
+            }
+          );
+          this.patientService.getPatient(episodeOfCare.Patient).subscribe(patient => {
+              console.log("patient set");
+              episodeOfCare.realPatient = patient;
+            }
+          )
+        }
+      }
     });
   }
 
@@ -159,10 +145,10 @@ export class TimelineComponent implements OnInit {
   }
 
   convertConditionCode(condition) {
-    for (let item in ConditionCodes) {
-      if (condition === item) {
-        return ConditionCodes[item];
+      for (let item in ConditionCodes) {
+        if (condition === item) {
+          return ConditionCodes[item];
+        }
       }
-    }
   }
 }
