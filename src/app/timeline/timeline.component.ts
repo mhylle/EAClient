@@ -7,6 +7,8 @@ import {PatientContextService} from "../services/patient.context.service";
 import {Subscription} from "rxjs";
 import {Patient} from "../model/patient/Patient";
 import {EpisodeOfCareService} from "../services/episodeofcare.service";
+import {OrgCode} from "../classifications/OrgCode";
+import {EpisodeOfCareElement} from "../model/episodeofcareelement/EpisodeOfCareElement";
 
 @Component({
   selector: 'timeline',
@@ -117,38 +119,70 @@ export class TimelineComponent implements OnInit {
 
   }
 
-  hasContent(date: Date, episodeOfCare: EpisodeOfCare): boolean {
+  hasEpisodeOfCareElementContent(date: Date, episodeOfCareElement: EpisodeOfCareElement): boolean {
     let result = false;
-    // if (episodeOfCare.realPatient != null) {
-    //   let episodesOfCare= episodeOfCare.realPatient.EpisodesOfCare;
-    //   if (episodesOfCare != null) {
-    //     for (let i = 0; i < episodesOfCare.length; i++) {
-    //       let episodeOfCare = episodesOfCare[i];
-    //       if (episodeOfCare.Period.StartTime.getTime() <= date.getTime()) {
-    //         if (episodeOfCareElement.Period.EndTime != null) {
-    //           if (episodeOfCareElement.Period.EndTime.getTime() >= date.getTime()) {
-    //             console.log("result was true1");
-    //             result = true;
-    //           } else {
-    //             console.log("result was false1");
-    //             result = false;
-    //           }
-    //         } else {
-    //           console.log("result was true2");
-    //           result = true;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+    if (episodeOfCareElement != null) {
+      if (episodeOfCareElement.Period.StartTime != null) {
+        let myDate = new Date(episodeOfCareElement.Period.StartTime);
+        let start = new Date();
+        start.setHours(0, 0, 0, 0);
+        start.setFullYear(myDate.getFullYear(), myDate.getMonth(), myDate.getDate());
+        console.log(date);
+        if (start.getTime() <= date.getTime()) {
+          if (episodeOfCareElement.Period.EndTime != null) {
+            let myDate = new Date(episodeOfCareElement.Period.EndTime);
+            let end = new Date();
+            end.setHours(0, 0, 0, 0);
+            end.setFullYear(myDate.getFullYear(), myDate.getMonth(), myDate.getDate());
+            if (end.getTime() >= date.getTime()) {
+              result = true;
+            }
+          } else {
+            result = true;
+          }
+        }
+      }
+    }
     return result;
   }
 
-  convertConditionCode(condition) {
-      for (let item in ConditionCodes) {
-        if (condition === item) {
-          return ConditionCodes[item];
+  hasEpisodeOfCareContent(date: Date, episodeOfCare: EpisodeOfCare): boolean {
+    let result = false;
+    if (episodeOfCare != null) {
+      if (episodeOfCare.Period.StartTime != null) {
+        let myDate = new Date(episodeOfCare.Period.StartTime);
+        let start = new Date();
+        start.setHours(0, 0, 0, 0);
+        start.setFullYear(myDate.getFullYear(), myDate.getMonth(), myDate.getDate());
+        if (start.getTime() <= date.getTime()) {
+          if (episodeOfCare.Period.EndTime != null) {
+            let myDate = new Date(episodeOfCare.Period.EndTime);
+            let end = new Date();
+            end.setHours(0, 0, 0, 0);
+            end.setFullYear(myDate.getFullYear(), myDate.getMonth(), myDate.getDate());
+            if (end.getTime() >= date.getTime()) {
+              result = true;
+            }
+          } else {
+            result = true;
+          }
         }
       }
+    }
+    return result;
+  }
+  convertConditionCode(condition) {
+    for (let item in ConditionCodes) {
+      if (condition === item) {
+        return ConditionCodes[item];
+      }
+    }
+  }
+  convertSorCode(sorCode) {
+    for (let item in OrgCode) {
+      if (sorCode === item) {
+        return OrgCode[item];
+      }
+    }
   }
 }

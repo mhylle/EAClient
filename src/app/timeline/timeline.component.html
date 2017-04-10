@@ -3,12 +3,35 @@
     <div class="content-body">
       <div class="timelineInfoCell">
         <div class="headerCell">Titel</div>
-        <div *ngFor="let episodeOfCare of episodesOfCare"><span>Forløb:</span> <span *ngIf="episodeOfCare.realCondition">{{convertConditionCode(episodeOfCare.realCondition.Code)}}</span></div>
+        <div *ngFor="let episodeOfCare of episodesOfCare" style="min-height: 24px; max-height: 24px;">
+          <span class="episodeOfCareLabel">Forløb:</span>
+          <span
+            *ngIf="episodeOfCare.realCondition" class="episodeOfCareLabel">{{convertConditionCode(episodeOfCare.realCondition.Code)}}</span>
+          <div *ngFor="let episodeOfCareElement of episodeOfCare.EpisodeOfCareElements" class="episodeOfCareElementLabel">
+            {{convertSorCode(episodeOfCareElement.ResponsibleUnit)}}
+          </div>
+        </div>
       </div>
-      <div class="timelineCell" *ngFor="let unit of units">
-        <div class="headerCell">{{unit | date: 'dd/MM-yyyy'}}</div>
-        <div *ngFor="let episodeOfCare of episodesOfCare">
-          <span [ngClass]="{eventClass: hasContent(unit, episodeOfCare), nonEventClass: !hasContent(unit, episodeOfCare)}"></span>
+      <div style="overflow: scroll; width: 1024px; height: 256px;">
+        <div class="timelineCell" *ngFor="let unit of units">
+          <div class="headerCell">{{unit | date: 'dd/MM-yyyy'}}</div>
+          <div *ngFor="let episodeOfCare of episodesOfCare">
+            <div style="min-height: 24px; max-height: 24px; position: relative">
+              <div [ngClass]="{episodeOfCareActive: hasEpisodeOfCareContent(unit, episodeOfCare)}">
+                &nbsp;
+              </div>
+            </div>
+
+            <div *ngFor="let episodeOfCareElement of episodeOfCare.EpisodeOfCareElements">
+              <div style="min-height: 24px; max-height: 24px; position: relative">
+                <div *ngIf="hasEpisodeOfCareElementContent(unit, episodeOfCareElement)" class="episodeOfCareElementActive">
+                  <span class="episodeOfCareElementMarker" *ngIf="episodeOfCareElement.Status">{{episodeOfCareElement.Status.substr(0,1)}}</span>
+                  <span class="episodeOfCareElementMarker" *ngIf="!episodeOfCareElement.Status">A</span>
+                  &nbsp;
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

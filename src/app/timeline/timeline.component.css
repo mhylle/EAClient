@@ -1,11 +1,25 @@
 .timeline {
+
   width: 4096px;
   padding-top: 8px;
 }
 .headerCell {
+  font-size: 0.9em;
+  padding: 4px;
   background-color: #3b7d97;
   color: white;
   border: 1px solid white;
+  white-space: nowrap;
+}
+.episodeOfCareLabel {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.episodeOfCareElementLabel {
+  font-size: 0.85em;
+  font-weight: bold;
+  margin-left: 8px;
 }
 
 .content-body-wrapper {
@@ -20,7 +34,7 @@
 
 .timelineInfoCell {
   display: table-cell;
-  width: 120px;
+  width: 200px;
   padding:0;
   margin:0;
 }
@@ -29,13 +43,44 @@
   display: table-cell;
   padding:0;
   margin:0;
-  width: 80px;
+  width: 62px;
 }
 
-.eventClass {
-  background-color: #0a6cd6;
+.episodeOfCareActive {
+  border-left: 1px solid white;
+  position: absolute;
+  top: 8px;
+  min-width: 80px;
+  max-width: 80px;
+
+  min-height: 8px;
+  max-height: 8px;
+  background-color: #0066CC;
 }
 
-.nonEventClass {
-  background-color: #cd0a0a;
+.episodeOfCareElementActive {
+  border-left: 1px solid white;
+  position: absolute;
+  top: 8px;
+
+  min-width: 80px;
+  max-width: 80px;
+
+  min-height: 8px;
+  max-height: 8px;
+  background-color: #00CC66;
+}
+
+.episodeOfCareElementMarker {
+  font-size: 0.8em;
+  border-radius: 100%;
+  border: 1px solid gray;
+  background-color: white;
+  min-width: 16px;
+  max-width: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  position: absolute;
+  top: -3px;
+  left: -3px;
 }

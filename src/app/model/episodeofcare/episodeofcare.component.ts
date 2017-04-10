@@ -17,8 +17,10 @@ export class EpisodeOfCareComponent implements OnInit {
 
   constructor(private episodeOfCareService: EpisodeOfCareService) {
     this.start = new Date();
-    this.start.setDate(this.start.getDate() -14);
+    this.start.setHours(0,0,0,0)
+    this.start.setDate(this.start.getDate() -25);
     this.end = new Date();
+    this.end.setHours(23,59,59,999);
     this.end.setDate(this.end.getDate()+5);
 
   }
