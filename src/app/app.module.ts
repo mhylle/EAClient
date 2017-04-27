@@ -34,6 +34,7 @@ import {TimelineComponent} from "./timeline/timeline.component";
 
 const appRoutes: Routes = [
   {path: 'episodesofcare', component: EpisodeOfCareComponent},
+  {path: 'episodesofcare/:pid', component: EpisodeOfCareComponent},
   {path: 'list-referrals', component: ListReferralComponent},
   {path: 'referral', component: CreateReferralComponent},
   {path: 'patients', component: PatientListComponent},
