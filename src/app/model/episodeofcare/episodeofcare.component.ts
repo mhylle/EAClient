@@ -1,10 +1,11 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {EpisodeOfCareService} from "../../services/episodeofcare.service";
 import {EpisodeOfCare} from "./EpisodeOfCare";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {PatientContextService} from "../../services/patient.context.service";
 import {PatientService} from "../../services/patient.service";
+import {Patient} from "../patient/Patient";
 
 
 @Component({
@@ -13,7 +14,7 @@ import {PatientService} from "../../services/patient.service";
   styleUrls: ['episodeofcare.component.css'],
   providers: [EpisodeOfCareService]
 })
-export class EpisodeOfCareComponent implements OnInit {
+export class EpisodeOfCareComponent implements OnInit, OnDestroy {
 
   start: Date = new Date();
   end: Date = new Date();
@@ -21,6 +22,7 @@ export class EpisodeOfCareComponent implements OnInit {
   pid: number;
   routerParamSubscription: Subscription;
   private patientSubscription: Subscription;
+  private patient: Patient;
 
   constructor(private route: ActivatedRoute, private patientContextService: PatientContextService, private patientService: PatientService, private episodeOfCareService: EpisodeOfCareService) {
     this.start = new Date();
@@ -29,7 +31,6 @@ export class EpisodeOfCareComponent implements OnInit {
     this.end = new Date();
     this.end.setHours(23, 59, 59, 999);
     this.end.setDate(this.end.getDate() + 5);
-
   }
 
   ngOnInit(): void {
@@ -37,19 +38,17 @@ export class EpisodeOfCareComponent implements OnInit {
       this.pid = +params['pid'];
       console.log('pid: ' + +params['pid']);
       this.patientService.getPatient("" + this.pid).subscribe(patient => {
-        this.patientContextService.setContext(patient);
+        this.patient = patient;
+        this.episodeOfCareService.getEpisodesOfCare(this.patient).subscribe(episodesOfCare => {
+          console.log('updated episodes of care');
+          this.episodesOfCare = episodesOfCare;
+          console.log('updated episodes of care1');
+          this.patient.EpisodesOfCare = episodesOfCare;
+          console.log('setting context');
+          this.patientContextService.setContext(this.patient);
+        });
       })
     });
-
-    this.patientSubscription = this.patientContextService.contextChange.subscribe(context => {
-      console.log('got a new context');
-      this.episodeOfCareService.getEpisodesOfCare(context).subscribe(episodesOfCare => {
-        console.log('updated episodes of care');
-        this.episodesOfCare = episodesOfCare;
-      });
-
-    });
-    // TODO: use patient context.
   }
 
   ngOnDestroy() {
