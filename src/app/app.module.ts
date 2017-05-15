@@ -31,10 +31,12 @@ import {PatientContextService} from "./services/patient.context.service";
 import {ReferralContextService} from "./services/referral.context.service";
 import {EpisodeOfCareComponent} from "./model/episodeofcare/episodeofcare.component";
 import {TimelineComponent} from "./timeline/timeline.component";
+import {CompareDateComponent} from "./utilities/comparedates/comparedate.component";
 
 const appRoutes: Routes = [
   {path: 'episodesofcare', component: EpisodeOfCareComponent},
   {path: 'episodesofcare/:pid', component: EpisodeOfCareComponent},
+  {path: 'compare/:pid', component: CompareDateComponent},
   {path: 'list-referrals', component: ListReferralComponent},
   {path: 'referral', component: CreateReferralComponent},
   {path: 'patients', component: PatientListComponent},
@@ -65,7 +67,8 @@ const appRoutes: Routes = [
     EpisodeofcareSelectComponent,
     ReferralDetailsComponent,
     MhCardComponent,
-    TimelineComponent
+    TimelineComponent,
+    CompareDateComponent
   ],
   imports: [
     BrowserModule,

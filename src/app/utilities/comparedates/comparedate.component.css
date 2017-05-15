@@ -1,0 +1,126 @@
+.timeline {
+  width: 4096px;
+  padding-top: 8px;
+}
+
+.headerCell {
+  font-size: 0.9em;
+  padding: 4px;
+  background-color: #3b7d97;
+  color: white;
+  border: 1px solid white;
+  white-space: nowrap;
+}
+
+.episodeOfCareLabel {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.episodeOfCareElementLabel {
+  font-size: 0.85em;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.content-body-wrapper {
+  display: table;
+  border-collapse: collapse;
+}
+
+.content-body {
+  padding-top: 20px;
+  display: table-row;
+}
+
+.timelineInfoCell {
+  display: table-cell;
+  width: 200px;
+  padding: 0;
+  margin: 0;
+}
+
+.timelineCell {
+  display: table-cell;
+  padding: 0;
+  margin: 0;
+  width: 62px;
+}
+
+.episodeOfCareActive {
+  border-left: 1px solid white;
+  position: absolute;
+  top: 8px;
+  min-width: 80px;
+  max-width: 80px;
+
+  min-height: 8px;
+  max-height: 8px;
+  background-color: #0066CC;
+}
+
+.episodeOfCareElementActive {
+  border-left: 1px solid white;
+  position: absolute;
+  top: 8px;
+
+  min-width: 80px;
+  max-width: 80px;
+
+  min-height: 8px;
+  max-height: 8px;
+  background-color: #00CC66;
+}
+
+.episodeOfCareElementMarker {
+  font-size: 0.8em;
+  border-radius: 100%;
+  border: 1px solid gray;
+  background-color: white;
+  min-width: 16px;
+  max-width: 16px;
+  min-height: 16px;
+  max-height: 16px;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+}
+
+.sample-show-hide {
+  transition: all linear 0.5s;
+}
+
+.sample-show-hide.ng-hide {
+  opacity: 0;
+}
+
+.episodeOfCareElement {
+  border-top: 1px solid lightgray;
+  min-height: 48px;
+  max-height: 48px;
+  position: relative;
+  border-left: 1px dashed lightgrey
+}
+
+.episodeOfCare {
+  min-height: 24px;
+  max-height: 24px;
+  position: relative;
+}
+
+.episodeOfCareElementTitle {
+  min-height: 48px;
+  max-height: 48px;
+  position: relative;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+}
+
+.episodeOfCareTitle {
+  min-height: 24px;
+  max-height: 24px;
+  position: relative;
+}
+
+

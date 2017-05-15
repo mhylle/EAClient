@@ -1,0 +1,9 @@
+<div *ngIf="compareDatePatient">
+  {{compareDatePatient.Name}}
+  <div *ngFor="let compareDateEpisodeOfCare of compareDateEpisodesOfCare">
+    {{compareDateEpisodeOfCare.Period.StartTime  | date: 'dd/MM-yyyy HH:mm' }}
+    <div *ngFor="let episodeOfCareElement of compareDateEpisodeOfCare.EpisodeOfCareElements">
+      <div>&nbsp;&nbsp;&nbsp;{{episodeOfCareElement.Period.StartTime | date: 'dd/MM-yyyy HH:mm'}}</div>
+    </div>
+  </div>
+</div>

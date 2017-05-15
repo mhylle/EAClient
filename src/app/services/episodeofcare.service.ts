@@ -16,6 +16,7 @@ export class EpisodeOfCareService {
   }
 
   getEpisodesOfCare(patient: Patient) {
+    console.log('get episode of care for patient: ' + patient.Name);
     return this.http.get(this.episodeOfCareUrl)
       .map(res => res.json());
   }
